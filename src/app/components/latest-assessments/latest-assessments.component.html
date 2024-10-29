@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let a of latestAssessments">
+            <app-assessment [assessmentDetail]="a"></app-assessment>
+        </div>
+    </div>
+    <div class="text-center m-5">
+        <a class="btn btn-outline-info " routerLink="/viewassessment">View All Assessments</a>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <h3 class="mb-4">Add Course</h3>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="cId">Course ID</label>
+                    <input id="cId" type="text" class="form-control"
+                        formControlName="cId" placeholder="Enter Course ID">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="cname">Name</label>
+                    <input id="cname" type="text" class="form-control"
+                        formControlName="cname" placeholder="Enter Course Name">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control"
+                        formControlName="description" placeholder="Enter Course Description"></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Add Course</button>
+    </form>
+</div>

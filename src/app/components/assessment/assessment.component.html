@@ -1,0 +1,33 @@
+<div class="card assesment-card" [ngClass]="assessmentDetail.isActive? '':'text-bg-secondary'">
+    <div class="card-body">
+        <h5 class="card-title">Assessment {{ assessmentDetail.assessmentNo }}</h5>
+        <p class="card-text">{{ assessmentDetail.assessmentName}}</p>
+        <p class="card-text">Date: {{ assessmentDetail.assessmentDate | date }}</p>
+        <p class="card-text">Time: {{ assessmentDetail.assessmentTime }}</p>
+        <button class="btn btn-outline-primary" (click)="toggleDetails()" [ngClass]="assessmentDetail.isActive?'':'disabled'">
+            {{ showDetails ? 'Hide Details' : 'Show Details' }}
+        </button>
+
+        <!-- Show details when the button is clicked -->
+        <div *ngIf="showDetails" class="assessment-details">
+            <h6>Faculty ID: {{ assessmentDetail.facultyId }}</h6>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let question of assessmentDetail.questions">
+                    <strong>Q{{ question.id }}:</strong> {{ question.qText }}<br />
+
+
+                    <ng-container *ngIf="question.qType === 'Objective'; else subjectiveTemplate">
+                        <strong>Options:</strong> {{ question.options.join(', ') }}<br />
+                        <strong>Answer:</strong> {{ question.answer }}<br />
+                    </ng-container>
+
+                    <!-- Only show for Subjective type -->
+                    <ng-template #subjectiveTemplate>
+                        <strong>Type:</strong> {{ question.qType }}
+                    </ng-template>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

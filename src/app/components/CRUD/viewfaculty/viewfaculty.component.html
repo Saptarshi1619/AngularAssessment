@@ -1,0 +1,13 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let c of arrfaculty">
+            <div class="faculty-card mb-4">
+                <div class="faculty-card-body">
+                    <h5 class="faculty-card-title">{{c.name}}</h5>
+                    <h6 class="faculty-card-subtitle">User ID: {{c.userId}}</h6>
+                    <p class="faculty-card-id">Faculty ID: {{c.id}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

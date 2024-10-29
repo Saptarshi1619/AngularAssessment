@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a mdbRipple class="mx-3 bg-dark btn btn-outline-light btn-floating m-1" role="button"
+        ><i class="fas fa-graduation-cap"></i></a>
+      <a class="navbar-brand" [routerLink]="'/home'">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/about'">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/viewassessment'">Assessment</a> <!--*ngIf="isLoggedIn"-->
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/admin'">Admin</a>  <!--*ngIf="isAdmin"-->
+          </li>
+        </ul>
+        <!-- Modals -->
+         <!-- Button trigger modal -->
+<button class="btn btn-primary" *ngIf="!isLoggedIn" data-bs-toggle="modal" data-bs-target="#signInModal">
+                    Sign In
+                </button>
+                <button class="btn btn-logout" *ngIf="isLoggedIn" (click)="onLogout()">
+                    Log Out
+                </button>
+
+<!-- Modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="signInModalLabel">Add Student</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form #myForm="ngForm" *ngIf="!isRegisterMode; else registerForm"
+        (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input name="userName" [(ngModel)]="userName" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <ng-template #registerForm>
+          <form (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                  <label for="registerEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="userName" required>
+              </div>
+              <div class="mb-3">
+                  <label for="registerPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+          <p class="mt-3 logger">Already have an account? <a href="#" (click)="toggle($event)">Sign In</a></p>
+      </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </nav>

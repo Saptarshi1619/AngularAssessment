@@ -1,0 +1,26 @@
+<div class="responsive-container-block bigContainer">
+    <div class="responsive-container-block Container">
+      <p class="text-blk heading">
+        About Us
+      </p>
+      <p class="text-blk subHeading">
+        OUR FOUNDERS:
+      </p>
+
+      <ul class="list-unstyled d-flex flex-row mb-3">
+        <li class="p-3" *ngFor="let director of directors">
+          <button class="btn btn btn-outline-secondary" [class.selected]="director === selecteDirector" (click)="onSelect(director)">
+            <!-- <span>{{director.position}}</span> -->
+            <span>{{director.name}}</span>
+            <!-- <span>{{director.bio}}</span> -->
+          </button>
+        </li>
+      </ul>
+      
+      <div *ngIf="selecteDirector">
+        <h4>{{selecteDirector.name | uppercase}} Details: </h4>
+        <div>Position: {{selecteDirector.position}}</div>
+        <div>Bio: {{selecteDirector.bio}}</div>
+      </div>
+    </div>
+  </div>

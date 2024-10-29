@@ -1,0 +1,16 @@
+<div *ngIf="!isLoggedIn">
+    <h1>Welcome to Our Website!</h1>
+    <p>Please sign in to access more features.</p>
+</div>
+
+<div *ngIf="isLoggedIn && !isAdmin">
+    <h1>Hello, User!</h1>
+    <p>Here are your assessments.</p>
+    <app-latest-assessments></app-latest-assessments>
+</div>
+
+<div *ngIf="isLoggedIn && isAdmin">
+    <h1>Hello, Admin!</h1>
+    <p>Manage assessments and user roles.</p>
+    <app-latest-assessments></app-latest-assessments>
+</div>

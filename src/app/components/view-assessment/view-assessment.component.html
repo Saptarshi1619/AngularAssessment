@@ -1,0 +1,30 @@
+<p>List of Assessments:</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let a of arrAssessments">
+            <app-assessment [assessmentDetail]="a" (checkPrice)="getPrice($event)"></app-assessment>
+            <span class="badge text-bg-success" [ngClass]="badgeDisplay?'':'visually-hidden'">Discount</span>
+        </div>
+    </div>
+</div>
+
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center mt-4">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="prevPage()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let page of [].constructor(totalPages()); let i = index">
+            <a class="page-link" (click)="currentPage = i + 1" [class.active]="currentPage === (i + 1)">
+                {{ i + 1 }}
+            </a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages()">
+            <a class="page-link" (click)="nextPage()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
