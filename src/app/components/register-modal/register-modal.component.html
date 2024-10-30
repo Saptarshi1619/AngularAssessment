@@ -1,106 +1,108 @@
 <div class="container mt-5">
     <h2 class="mb-4">Sign Up</h2>
-    <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="first-name">First Name:</label>
-            <input [(ngModel)]="firstName" name="first_name" type="text" class="form-control" id="first-name" required>
-            <div *ngIf="signupForm.controls['first_name']?.invalid && (signupForm.controls['first_name']?.touched || signupForm.submitted)" class="text-danger">
+            <input formControlName="firstName" type="text" class="form-control" id="first-name">
+            <div *ngIf="signupForm.get('firstName')?.invalid && (signupForm.get('firstName')?.touched || isSubmitted)" class="text-danger">
                 First Name is required.
             </div>
         </div>
 
         <div class="form-group">
             <label for="last-name">Last Name:</label>
-            <input [(ngModel)]="lastName" name="last_name" type="text" class="form-control" id="last-name" required>
-            <div *ngIf="signupForm.controls['last_name']?.invalid && (signupForm.controls['last_name']?.touched || signupForm.submitted)" class="text-danger">
+            <input formControlName="lastName" type="text" class="form-control" id="last-name">
+            <div *ngIf="signupForm.get('lastName')?.invalid && (signupForm.get('lastName')?.touched || isSubmitted)" class="text-danger">
                 Last Name is required.
             </div>
         </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
-            <input [(ngModel)]="email" name="email" type="email" class="form-control" id="email" required>
-            <div *ngIf="signupForm.controls['email']?.invalid && (signupForm.controls['email']?.touched || signupForm.submitted)" class="text-danger">
+            <input formControlName="email" type="email" class="form-control" id="email">
+            <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || isSubmitted)" class="text-danger">
                 A valid Email is required.
             </div>
         </div>
 
         <div class="form-group">
             <label for="password">Password:</label>
-            <input [(ngModel)]="password" name="password" type="password" class="form-control" id="password" required>
-            <div *ngIf="signupForm.controls['password']?.invalid && (signupForm.controls['password']?.touched || signupForm.submitted)" class="text-danger">
+            <input formControlName="password" type="password" class="form-control" id="password">
+            <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || isSubmitted)" class="text-danger">
                 Password is required.
             </div>
         </div>
 
         <div class="form-group">
             <label for="confirm-password">Confirm Password:</label>
-            <input [(ngModel)]="confirmPassword" name="confirm_password" type="password" class="form-control" id="confirm-password" required>
-            <div *ngIf="signupForm.controls['confirm_password']?.invalid && (signupForm.controls['confirm_password']?.touched || signupForm.submitted)" class="text-danger">
-                Confirm Password is required.
+            <input formControlName="confirmPassword" type="password" class="form-control" id="confirm-password">
+            <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.touched || isSubmitted)" class="text-danger">
+                Must be same as Password.
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="house-no">House No:</label>
-            <input [(ngModel)]="address.houseNo" name="house_no" type="text" class="form-control" id="house-no" required>
-            <div *ngIf="signupForm.controls['house_no']?.invalid && (signupForm.controls['house_no']?.touched || signupForm.submitted)" class="text-danger">
-                House No is required.
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="house-no">House No:</label>
+                <input formControlName="houseNo" type="text" class="form-control" id="house-no">
+                <div *ngIf="signupForm.get('address.houseNo')?.invalid && (signupForm.get('address.houseNo')?.touched || isSubmitted)" class="text-danger">
+                    House No is required.
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="street">Street:</label>
-            <input [(ngModel)]="address.street" name="street" type="text" class="form-control" id="street" required>
-            <div *ngIf="signupForm.controls['street']?.invalid && (signupForm.controls['street']?.touched || signupForm.submitted)" class="text-danger">
-                Street is required.
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input formControlName="street" type="text" class="form-control" id="street">
+                <div *ngIf="signupForm.get('address.street')?.invalid && (signupForm.get('address.street')?.touched || isSubmitted)" class="text-danger">
+                    Street is required.
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="area">Area:</label>
-            <input [(ngModel)]="address.area" name="area" type="text" class="form-control" id="area" required>
-            <div *ngIf="signupForm.controls['area']?.invalid && (signupForm.controls['area']?.touched || signupForm.submitted)" class="text-danger">
-                Area is required.
+            <div class="form-group">
+                <label for="area">Area:</label>
+                <input formControlName="area" type="text" class="form-control" id="area">
+                <div *ngIf="signupForm.get('address.area')?.invalid && (signupForm.get('address.area')?.touched || isSubmitted)" class="text-danger">
+                    Area is required.
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="city">City:</label>
-            <input [(ngModel)]="address.city" name="city" type="text" class="form-control" id="city" required>
-            <div *ngIf="signupForm.controls['city']?.invalid && (signupForm.controls['city']?.touched || signupForm.submitted)" class="text-danger">
-                City is required.
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input formControlName="city" type="text" class="form-control" id="city">
+                <div *ngIf="signupForm.get('address.city')?.invalid && (signupForm.get('address.city')?.touched || isSubmitted)" class="text-danger">
+                    City is required.
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="state">State:</label>
-            <input [(ngModel)]="address.state" name="state" type="text" class="form-control" id="state" required>
-            <div *ngIf="signupForm.controls['state']?.invalid && (signupForm.controls['state']?.touched || signupForm.submitted)" class="text-danger">
-                State is required.
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input formControlName="state" type="text" class="form-control" id="state">
+                <div *ngIf="signupForm.get('address.state')?.invalid && (signupForm.get('address.state')?.touched || isSubmitted)" class="text-danger">
+                    State is required.
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="country">Country:</label>
-            <input [(ngModel)]="address.country" name="country" type="text" class="form-control" id="country" required>
-            <div *ngIf="signupForm.controls['country']?.invalid && (signupForm.controls['country']?.touched || signupForm.submitted)" class="text-danger">
-                Country is required.
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input formControlName="country" type="text" class="form-control" id="country">
+                <div *ngIf="signupForm.get('address.country')?.invalid && (signupForm.get('address.country')?.touched || isSubmitted)" class="text-danger">
+                    Country is required.
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="zip">Zip Code:</label>
-            <input [(ngModel)]="address.zip" name="zip" type="text" class="form-control" id="zip" required>
-            <div *ngIf="signupForm.controls['zip']?.invalid && (signupForm.controls['zip']?.touched || signupForm.submitted)" class="text-danger">
-                Zip Code is required.
+            <div class="form-group">
+                <label for="zip">Zip Code:</label>
+                <input formControlName="zip" type="text" class="form-control" id="zip">
+                <div *ngIf="signupForm.get('address.zip')?.invalid && (signupForm.get('address.zip')?.touched || isSubmitted)" class="text-danger">
+                    Zip Code is required.
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             <label for="mobile">Mobile:</label>
-            <input [(ngModel)]="mobile" name="mobile" type="tel" class="form-control" id="mobile" required>
-            <div *ngIf="signupForm.controls['mobile']?.invalid && (signupForm.controls['mobile']?.touched || signupForm.submitted)" class="text-danger">
+            <input formControlName="mobile" type="tel" class="form-control" id="mobile">
+            <div *ngIf="signupForm.get('mobile')?.invalid && (signupForm.get('mobile')?.touched || isSubmitted)" class="text-danger">
                 Mobile number is required.
             </div>
         </div>
