@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Question } from '../../Models/question';
 import { Assessment } from '../../Models/assessment';
 
@@ -7,9 +7,18 @@ import { Assessment } from '../../Models/assessment';
   templateUrl: './view-assessment.component.html',
   styleUrl: './view-assessment.component.scss'
 })
-export class ViewAssessmentComponent {
+export class ViewAssessmentComponent{
+
+  name:string = ""
+  
+
+  setValues(namefld:string){
+    this.name = namefld
+  }
+
   currentPage: number = 1; // Current page number
   assessmentsPerPage: number = 9; // Total assessments to display per page
+  pagedAssessments:Assessment[] = []
 
   // Get the current assessments based on the current page
   get arrAssessments(): Assessment[] {
@@ -20,6 +29,40 @@ export class ViewAssessmentComponent {
     );
   }
 
+  filteredAssessments:Assessment[] = []
+  searchTerm:string = ""
+  filterAssessments() {
+    this.currentPage = 1;
+    const term = this.searchTerm.toLowerCase().trim();
+
+
+    if (this.searchTerm === '') {
+      this.filteredAssessments = [...this.assessments];
+    } else {
+      this.filteredAssessments = this.assessments.filter((assessment) =>
+        assessment.assessmentName.toLowerCase().startsWith(term)
+      );
+      //if (this.filterAssessments.length == 0) this.noResultsFound = true;
+    }
+    this.updatePagedAssessments();
+  }
+  updatePagedAssessments() {
+    const startIndex = (this.currentPage - 1) * this.assessmentsPerPage;
+    this.pagedAssessments = this.filteredAssessments.slice(
+      startIndex,
+      startIndex + this.assessmentsPerPage
+    );
+  }
+  
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchTerm']) {
+      this.filterAssessments();
+    }
+  }
+
+
   badgeDisplay:boolean = false
   //event handler
   getPrice(evt:any){
@@ -28,6 +71,15 @@ export class ViewAssessmentComponent {
     }
     else{
       this.badgeDisplay = true
+    }
+  }
+
+  blnPriceCheck(pr:number):boolean{
+    if(pr<50){
+      return false
+    }
+    else{
+      return true
     }
   }
 
@@ -558,4 +610,5 @@ export class ViewAssessmentComponent {
     ),
   ];
   //#endregion
+
 }

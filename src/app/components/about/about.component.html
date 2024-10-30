@@ -7,20 +7,37 @@
         OUR FOUNDERS:
       </p>
 
-      <ul class="list-unstyled d-flex flex-row mb-3">
+      <!-- <ul class="list-unstyled d-flex flex-row mb-3">
         <li class="p-3" *ngFor="let director of directors">
-          <button class="btn btn btn-outline-secondary" [class.selected]="director === selecteDirector" (click)="onSelect(director)">
+          <button class="btn btn btn-outline-secondary" [class.selected]="director === selecteDirector" (click)="onSelect(director)"> -->
             <!-- <span>{{director.position}}</span> -->
-            <span>{{director.name}}</span>
+            <!-- <span>{{director.name}}</span> -->
             <!-- <span>{{director.bio}}</span> -->
-          </button>
+          <!-- </button>
         </li>
-      </ul>
+      </ul> -->
       
-      <div *ngIf="selecteDirector">
+      <!-- <div *ngIf="selecteDirector">
         <h4>{{selecteDirector.name | uppercase}} Details: </h4>
         <div>Position: {{selecteDirector.position}}</div>
         <div>Bio: {{selecteDirector.bio}}</div>
       </div>
-    </div>
+    </div> -->
+
+    <!-- <div class="accordion" id="directorAccordion">
+      <div class="accordion-item" *ngFor="let director of directors">
+        <h2 class="accordion-header" id="heading{{director.id}}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{director.id}}" aria-expanded="true" aria-controls="collapse{{director.id}}">
+            {{director.name}}
+          </button>
+        </h2>
+        <div id="collapse{{director.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{director.id}}" data-bs-parent="#directorAccordion">
+          <div class="accordion-body">
+            <div><strong>Position:</strong> {{director.position}}</div>
+            <div><strong>Bio:</strong> {{director.bio}}</div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
   </div>

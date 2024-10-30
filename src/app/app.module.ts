@@ -35,6 +35,7 @@ import { UpdatecourseComponent } from './components/CRUD/updatecourse/updatecour
 import { ViewfacultyComponent } from './components/CRUD/viewfaculty/viewfaculty.component';
 import { AddfacultyComponent } from './components/CRUD/addfaculty/addfaculty.component';
 import { UpdatefacultyComponent } from './components/CRUD/updatefaculty/updatefaculty.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UpdatefacultyComponent } from './components/CRUD/updatefaculty/updatefa
     UpdatecourseComponent,
     ViewfacultyComponent,
     AddfacultyComponent,
-    UpdatefacultyComponent
+    UpdatefacultyComponent,
+    RegisterModalComponent
   ],
   imports: [
     BrowserModule,

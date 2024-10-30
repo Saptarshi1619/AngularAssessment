@@ -1,9 +1,13 @@
 <p>List of Assessments:</p>
 <div class="container">
+    <div class="search-bar">
+        <input type="text" class="form-control" placeholder="Search assessments by name..." [(ngModel)]="searchTerm"
+            (input)="filterAssessments()">
+    </div>
     <div class="row">
         <div class="col-md-4" *ngFor="let a of arrAssessments">
-            <app-assessment [assessmentDetail]="a" (checkPrice)="getPrice($event)"></app-assessment>
-            <span class="badge text-bg-success" [ngClass]="badgeDisplay?'':'visually-hidden'">Discount</span>
+            <app-assessment [assessmentDetail]="a" (checkPrice)="getPrice($event)" [searchValue]="name" [arrAssessment]="arrAssessments"></app-assessment>
+            <span class="badge text-bg-success" *ngIf="blnPriceCheck(a.price)">Discount</span>
         </div>
     </div>
 </div>
