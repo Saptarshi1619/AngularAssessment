@@ -20,41 +20,47 @@ export class ViewAssessmentComponent{
   assessmentsPerPage: number = 9; // Total assessments to display per page
   pagedAssessments:Assessment[] = []
 
-  // Get the current assessments based on the current page
-  get arrAssessments(): Assessment[] {
-    const startIndex = (this.currentPage - 1) * this.assessmentsPerPage;
-    return this.assessments.slice(
-      startIndex,
-      startIndex + this.assessmentsPerPage
-    );
-  }
-
   filteredAssessments:Assessment[] = []
   searchTerm:string = ""
   filterAssessments() {
-    this.currentPage = 1;
+    this.currentPage = 1; // Reset to first page on every new search
     const term = this.searchTerm.toLowerCase().trim();
 
-
     if (this.searchTerm === '') {
+      // If search term is empty, show all assessments
       this.filteredAssessments = [...this.assessments];
     } else {
-      this.filteredAssessments = this.assessments.filter((assessment) =>
-        assessment.assessmentName.toLowerCase().startsWith(term)
+      // Filter assessments by name
+      this.filteredAssessments = this.assessments.filter(assessment =>
+        assessment.assessmentName.toLowerCase().startsWith(this.searchTerm)
       );
-      //if (this.filterAssessments.length == 0) this.noResultsFound = true;
     }
-    this.updatePagedAssessments();
   }
-  updatePagedAssessments() {
+
+  // Pagination logics
+  get arrAssessments(): Assessment[] {
     const startIndex = (this.currentPage - 1) * this.assessmentsPerPage;
-    this.pagedAssessments = this.filteredAssessments.slice(
+    return this.filteredAssessments.slice(
       startIndex,
       startIndex + this.assessmentsPerPage
     );
   }
-  
 
+  totalPages(): number {
+    return Math.ceil(this.filteredAssessments.length / this.assessmentsPerPage);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchTerm']) {
@@ -83,22 +89,6 @@ export class ViewAssessmentComponent{
     }
   }
 
-  // Pagination logics
-  totalPages(): number {
-    return Math.ceil(this.assessments.length / this.assessmentsPerPage);
-  }
-
-  nextPage(): void {
-    if (this.currentPage < this.totalPages()) {
-      this.currentPage++;
-    }
-  }
-
-  prevPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
   //#region Data
   assessments: Assessment[] = [
     new Assessment(
