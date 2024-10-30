@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Question } from '../../Models/question';
 import { Assessment } from '../../Models/assessment';
 
@@ -14,6 +14,10 @@ export class ViewAssessmentComponent{
 
   setValues(namefld:string){
     this.name = namefld
+  }
+
+  constructor(private cdr:ChangeDetectorRef){
+
   }
 
   currentPage: number = 1; // Current page number
@@ -35,6 +39,7 @@ export class ViewAssessmentComponent{
         assessment.assessmentName.toLowerCase().startsWith(this.searchTerm)
       );
     }
+    //this.cdr.detectChanges()
   }
 
   // Pagination logics
@@ -78,6 +83,7 @@ export class ViewAssessmentComponent{
     else{
       this.badgeDisplay = true
     }
+    //this.cdr.detectChanges()
   }
 
   blnPriceCheck(pr:number):boolean{
