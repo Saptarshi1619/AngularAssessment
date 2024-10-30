@@ -7,6 +7,9 @@
                     <label for="cId">Course ID</label>
                     <input id="cId" type="text" class="form-control"
                         formControlName="cId" placeholder="Enter Course ID">
+                        <div *ngIf="courseForm.controls['cId'].hasError('required') && courseForm.controls['cId'].touched">
+                            Id is required
+                        </div>
                 </div>
             </div>
 
@@ -15,6 +18,9 @@
                     <label for="cname">Name</label>
                     <input id="cname" type="text" class="form-control"
                         formControlName="cname" placeholder="Enter Course Name">
+                        <div *ngIf="courseForm.controls['cname'].hasError('required') && courseForm.controls['cname'].touched">
+                           Name is required
+                        </div>
                 </div>
             </div>
 
@@ -22,7 +28,7 @@
                 <div class="col-sm-6">
                     <label for="description">Description</label>
                     <textarea id="description" class="form-control"
-                        formControlName="description" placeholder="Enter Course Description"></textarea>
+                         placeholder="Enter Course Description"></textarea>
                 </div>
             </div>
         </div>

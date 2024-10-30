@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FacultySaptarshi } from '../../../Models/facultysaptarshi';
 import { FacultyService } from '../../../services/faculty.service';
 
@@ -8,7 +8,7 @@ import { FacultyService } from '../../../services/faculty.service';
   templateUrl: './addfaculty.component.html',
   styleUrl: './addfaculty.component.scss'
 })
-export class AddfacultyComponent {
+export class AddfacultyComponent implements OnInit {
   facultyForm: FormGroup;
   submitted = true;
   arrFaculty: FacultySaptarshi[] = []
@@ -20,6 +20,13 @@ export class AddfacultyComponent {
       Id:[0],
       userId:[0],
       name:['']
+    });
+  }
+  ngOnInit(): void {
+    this.facultyForm = this.formbuilder.group({
+      Id: ['', Validators.required],
+      userId: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 

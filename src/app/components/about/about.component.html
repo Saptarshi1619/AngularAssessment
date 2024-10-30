@@ -24,20 +24,30 @@
       </div>
     </div> -->
 
-    <!-- <div class="accordion" id="directorAccordion">
+    <div class="accordion" id="directorAccordion">
       <div class="accordion-item" *ngFor="let director of directors">
         <h2 class="accordion-header" id="heading{{director.id}}">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{director.id}}" aria-expanded="true" aria-controls="collapse{{director.id}}">
+          <button 
+            class="accordion-button" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            [attr.data-bs-target]="'#collapse' + director.id" 
+            [attr.aria-expanded]="false" 
+            [attr.aria-controls]="'collapse' + director.id">
             {{director.name}}
           </button>
         </h2>
-        <div id="collapse{{director.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{director.id}}" data-bs-parent="#directorAccordion">
+        <div 
+          [attr.id]="'collapse' + director.id" 
+          class="accordion-collapse collapse" 
+          [attr.aria-labelledby]="'heading' + director.id" 
+          data-bs-parent="#directorAccordion">
           <div class="accordion-body">
             <div><strong>Position:</strong> {{director.position}}</div>
             <div><strong>Bio:</strong> {{director.bio}}</div>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
   </div>

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CourseSaptarshi } from '../../../Models/coursesaptarshi';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CourseService } from '../../../services/course.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { CourseService } from '../../../services/course.service';
   templateUrl: './addcourse.component.html',
   styleUrl: './addcourse.component.scss'
 })
-export class AddcourseComponent {
+export class AddcourseComponent implements OnInit{
   courseForm: FormGroup;
   submitted = true;
   arrCourse: CourseSaptarshi[] = []
@@ -19,7 +19,12 @@ export class AddcourseComponent {
     this.courseForm = this.formbuilder.group({
       cId:[0],
       cname:[''],
-      description:['']
+    });
+  }
+  ngOnInit(): void {
+    this.courseForm = this.formbuilder.group({
+      cId: ['', Validators.required],
+      cname: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
