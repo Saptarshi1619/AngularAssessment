@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../Models/coursesaptarshi';
+import { CourseSaptarshi } from '../Models/coursesaptarshi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-  private courses: Course[] = [
+  private courses: CourseSaptarshi[] = [
     {
       id: 1,
       name: 'Introduction to Programming', // cName
@@ -69,12 +69,12 @@ export class CourseService {
   ];
   constructor() { }
 
-  getAllCourses(): Course[] {
+  getAllCourses(): CourseSaptarshi[] {
     return this.courses;
   }
 
-  getCourseById(id:number):Course{
-    let p = new Course(0,'','')
+  getCourseById(id:number):CourseSaptarshi{
+    let p = new CourseSaptarshi(0,'','')
     for(var i=0;i<this.courses.length;i++){
       if(this.courses[i].id == id){
         console.log(this.courses[i])
@@ -84,11 +84,11 @@ export class CourseService {
    return p
   }
 
-  addCourse(course: Course): void {
+  addCourse(course: CourseSaptarshi): void {
     this.courses.push(course);
   }
 
-  updateCourse(updatedCourse: Course): void {
+  updateCourse(updatedCourse: CourseSaptarshi): void {
     const index = this.courses.findIndex(
       (course) => course.id === updatedCourse.id
     );

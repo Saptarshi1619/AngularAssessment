@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Faculty } from '../Models/facultysaptarshi';
+import { FacultySaptarshi } from '../Models/facultysaptarshi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FacultyService {
-  private facultyMembers: Faculty[] = [
+  private facultyMembers: FacultySaptarshi[] = [
     {
       id: 1,
       userId: 1, // Reference to User
@@ -34,12 +34,12 @@ export class FacultyService {
   ];
 
   constructor() { }
-  getAllFaculty(): Faculty[] {
+  getAllFaculty(): FacultySaptarshi[] {
     return this.facultyMembers;
   }
 
-  getFacultyById(id: number): Faculty{
-    let p = new Faculty(0,0,'')
+  getFacultyById(id: number): FacultySaptarshi{
+    let p = new FacultySaptarshi(0,0,'')
     for(var i=0;i<this.facultyMembers.length;i++){
       if(this.facultyMembers[i].id == id){
         console.log(this.facultyMembers[i])
@@ -49,11 +49,11 @@ export class FacultyService {
    return p
   }
 
-  addFaculty(faculty: Faculty): void {
+  addFaculty(faculty: FacultySaptarshi): void {
     this.facultyMembers.push(faculty);
   }
 
-  updateFaculty(updatedFaculty: Faculty): void {
+  updateFaculty(updatedFaculty: FacultySaptarshi): void {
     const index = this.facultyMembers.findIndex(
       (faculty) => faculty.id === updatedFaculty.id
     );

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Faculty } from '../../../Models/facultysaptarshi';
+import { FacultySaptarshi } from '../../../Models/facultysaptarshi';
 import { FacultyService } from '../../../services/faculty.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { FacultyService } from '../../../services/faculty.service';
   styleUrl: './viewfaculty.component.scss'
 })
 export class ViewfacultyComponent {
-  arrfaculty:Faculty[] = []
-  faculty:Faculty = new Faculty(0,0,'');
+  arrfaculty:FacultySaptarshi[] = []
+  faculty:FacultySaptarshi = new FacultySaptarshi(0,0,'');
 
   constructor(private FacultyService:FacultyService){
     this.arrfaculty = this.FacultyService.getAllFaculty()

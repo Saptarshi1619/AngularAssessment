@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Course } from '../../../Models/coursesaptarshi';
+import { CourseSaptarshi } from '../../../Models/coursesaptarshi';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CourseService } from '../../../services/course.service';
 
@@ -11,8 +11,8 @@ import { CourseService } from '../../../services/course.service';
 export class AddcourseComponent {
   courseForm: FormGroup;
   submitted = true;
-  arrCourse: Course[] = []
-  course = new Course(0,'','')
+  arrCourse: CourseSaptarshi[] = []
+  course = new CourseSaptarshi(0,'','')
 
   constructor(private formbuilder:FormBuilder, private courseservice:CourseService){
     this.arrCourse = this.courseservice.getAllCourses();
@@ -44,7 +44,7 @@ export class AddcourseComponent {
     console.log(cId, cname, description);
     if(cId && cname && description)
     {
-      this.course = new Course(tempId, cname, description)
+      this.course = new CourseSaptarshi(tempId, cname, description)
       this.courseservice.addCourse(this.course)
     }
   }

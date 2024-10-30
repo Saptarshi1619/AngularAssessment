@@ -1,4 +1,4 @@
-export class Faculty {
+export class FacultySaptarshi {
     id: number
     userId: number
     name: string

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Trainee } from '../Models/traineesaptarshi';
+import { TraineeSaptarshi } from '../Models/traineesaptarshi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TraineeService {
-  private trainees: Trainee[] = [
+  private trainees: TraineeSaptarshi[] = [
     {
       id: 1,
       userId: 6, // Reference to User
@@ -50,19 +50,19 @@ export class TraineeService {
 
   constructor() {}
 
-  getAllTrainees(): Trainee[] {
+  getAllTrainees(): TraineeSaptarshi[] {
     return this.trainees;
   }
 
-  getTraineeById(id: number): Trainee | undefined {
+  getTraineeById(id: number): TraineeSaptarshi | undefined {
     return this.trainees.find((trainee) => trainee.id === id);
   }
 
-  addTrainee(trainee: Trainee): void {
+  addTrainee(trainee: TraineeSaptarshi): void {
     this.trainees.push(trainee);
   }
 
-  updateTrainee(updatedTrainee: Trainee): void {
+  updateTrainee(updatedTrainee: TraineeSaptarshi): void {
     const index = this.trainees.findIndex(
       (trainee) => trainee.id === updatedTrainee.id
     );

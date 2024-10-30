@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Faculty } from '../../../Models/facultysaptarshi';
+import { FacultySaptarshi } from '../../../Models/facultysaptarshi';
 import { FacultyService } from '../../../services/faculty.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { FacultyService } from '../../../services/faculty.service';
 export class UpdatefacultyComponent {
   facultyForm: FormGroup;
   submitted!: true;
-  arrFaculty: Faculty[] = []
-  faculty:Faculty = new Faculty(0,0,'')
+  arrFaculty: FacultySaptarshi[] = []
+  faculty:FacultySaptarshi = new FacultySaptarshi(0,0,'')
   idUpdated:number = 0;
 
   constructor(private formBuilder:FormBuilder, private facultyService:FacultyService){
@@ -31,7 +31,7 @@ export class UpdatefacultyComponent {
     let name = this.facultyForm.value.name;
 
     if(id && userId && name){
-      this.faculty = new Faculty(this.idUpdated, userId,  name)
+      this.faculty = new FacultySaptarshi(this.idUpdated, userId,  name)
       this.facultyService.updateFaculty(this.faculty);
     }
   }

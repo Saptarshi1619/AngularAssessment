@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Faculty } from '../../../Models/facultysaptarshi';
+import { FacultySaptarshi } from '../../../Models/facultysaptarshi';
 import { FacultyService } from '../../../services/faculty.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { FacultyService } from '../../../services/faculty.service';
 export class AddfacultyComponent {
   facultyForm: FormGroup;
   submitted = true;
-  arrFaculty: Faculty[] = []
-  faculty = new Faculty(0,0,'')
+  arrFaculty: FacultySaptarshi[] = []
+  faculty = new FacultySaptarshi(0,0,'')
 
   constructor(private formbuilder:FormBuilder, private facultyservice:FacultyService){
     this.arrFaculty = this.facultyservice.getAllFaculty();
@@ -43,7 +43,7 @@ export class AddfacultyComponent {
 
     if(Id && userId && name)
     {
-      this.faculty = new Faculty(tempId, userId, name)
+      this.faculty = new FacultySaptarshi(tempId, userId, name)
       this.facultyservice.addFaculty(this.faculty)
     }
   }

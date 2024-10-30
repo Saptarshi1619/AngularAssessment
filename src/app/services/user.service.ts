@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Role } from '../Models/roles.enum';
-import { User } from '../Models/usersaptarshi';
+import { UserSaptarshi } from '../Models/usersaptarshi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[] = [
+  private users: UserSaptarshi[] = [
     {
       id: 1,
       firstName: 'Alice',
@@ -191,19 +191,19 @@ export class UserService {
   
   constructor() { }
 
-  getAllUsers(): User[] {
+  getAllUsers(): UserSaptarshi[] {
     return this.users;
   }
 
-  getUserById(id: number): User | undefined {
+  getUserById(id: number): UserSaptarshi | undefined {
     return this.users.find((user) => user.id === id);
   }
 
-  addUser(user: User): void {
+  addUser(user: UserSaptarshi): void {
     this.users.push(user);
   }
 
-  updateUser(updatedUser: User): void {
+  updateUser(updatedUser: UserSaptarshi): void {
     const index = this.users.findIndex((user) => user.id === updatedUser.id);
     if (index !== -1) {
       this.users[index] = updatedUser;

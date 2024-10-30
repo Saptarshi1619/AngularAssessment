@@ -1,7 +1,7 @@
 import { AddressSaptarshi } from "./addresssaptarshi";
 import { Role } from "./roles.enum";
 
-export class User {
+export class UserSaptarshi {
     id: number;
     firstName: string;
     lastName: string;

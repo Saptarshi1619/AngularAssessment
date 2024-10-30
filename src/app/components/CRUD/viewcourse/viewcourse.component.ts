@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Course } from '../../../Models/coursesaptarshi';
+import { CourseSaptarshi } from '../../../Models/coursesaptarshi';
 import { CourseService } from '../../../services/course.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { CourseService } from '../../../services/course.service';
   styleUrl: './viewcourse.component.scss'
 })
 export class ViewcourseComponent {
-  arrCourse:Course[] = []
-  course:Course = new Course(0,'','');
+  arrCourse:CourseSaptarshi[] = []
+  course:CourseSaptarshi = new CourseSaptarshi(0,'','');
 
   constructor(private CourseService:CourseService){
     this.arrCourse = this.CourseService.getAllCourses()

@@ -1,4 +1,4 @@
-export class Course {
+export class CourseSaptarshi {
     id: number;
     name: string; // cName
     description: string; // cDescription

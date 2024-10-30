@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
-import { User } from '../Models/usersaptarshi';
+import { UserSaptarshi } from '../Models/usersaptarshi';
 import { BehaviorSubject } from 'rxjs';
 import { Role } from '../Models/roles.enum';
 
@@ -8,8 +8,8 @@ import { Role } from '../Models/roles.enum';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedInUser: User | null = null;
-  private userStatusSubject = new BehaviorSubject<User | null>(null); // BehaviorSubject to hold user state
+  private loggedInUser: UserSaptarshi | null = null;
+  private userStatusSubject = new BehaviorSubject<UserSaptarshi | null>(null); // BehaviorSubject to hold user state
   userStatus$ = this.userStatusSubject.asObservable(); // Observable to subscribe to
 
   constructor(private userService: UserService) {}
@@ -44,7 +44,7 @@ export class AuthService {
     return null; // No user logged in
   }
 
-  getLoggedInUser(): User | null {
+  getLoggedInUser(): UserSaptarshi | null {
     return this.loggedInUser;
   }
 
