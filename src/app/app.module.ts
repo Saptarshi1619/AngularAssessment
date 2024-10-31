@@ -36,6 +36,19 @@ import { ViewfacultyComponent } from './components/CRUD/viewfaculty/viewfaculty.
 import { AddfacultyComponent } from './components/CRUD/addfaculty/addfaculty.component';
 import { UpdatefacultyComponent } from './components/CRUD/updatefaculty/updatefaculty.component';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AddassessmentComponent } from './components/CRUD/addassessment/addassessment.component';
+import { UpdateassessmentComponent } from './components/CRUD/updateassessment/updateassessment.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -55,7 +68,9 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     ViewfacultyComponent,
     AddfacultyComponent,
     UpdatefacultyComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    AddassessmentComponent,
+    UpdateassessmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,11 +91,23 @@ import { RegisterModalComponent } from './components/register-modal/register-mod
     MdbScrollspyModule,
     MdbTabsModule,
     MdbTooltipModule,
-    MdbValidationModule
+    MdbValidationModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatAccordion,
+    MatExpansionModule,
+    MatIconModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     provideClientHydration(),
-    provideAnimations()
+    provideAnimations(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
