@@ -1,0 +1,12 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let c of arrCategory">
+            <div class="faculty-card mb-4">
+                <div class="faculty-card-body">
+                    <h6 class="faculty-card-subtitle">Category ID: {{c.id}}</h6>
+                    <p class="faculty-card-id">Category Description: {{c.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

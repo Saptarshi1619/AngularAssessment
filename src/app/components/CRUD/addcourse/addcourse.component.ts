@@ -47,10 +47,12 @@ export class AddcourseComponent implements OnInit{
     let description = this.courseForm.value.description;
 
     console.log(cId, cname, description);
-    if(cId && cname && description)
+    if(cId && cname && description && this.courseForm.valid)
     {
       this.course = new CourseSaptarshi(tempId, cname, description)
       this.courseservice.addCourse(this.course)
+    }else {
+      this.courseForm.markAllAsTouched(); // This will trigger validation messages for all fields
     }
   }
 }

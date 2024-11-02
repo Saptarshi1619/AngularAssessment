@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <form [formGroup]="traineeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <h3 class="mb-4 text-center">Update Faculty</h3>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label class="form-label" for="id">Select a Faculty to Update</label>
+                    <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
+                        <option selected disabled>Select a Faculty</option>
+                        <option *ngFor="let p of arrTrainee" [ngValue]="p.id">{{p.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="userId">User ID</label>
+                    <input id="userId" type="text" class="form-control"
+                        formControlName="userId" placeholder="Enter User ID">
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" class="form-control"
+                        formControlName="name" placeholder="Enter Faculty Name">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-4" type="submit">Update Trainee</button>
+    </form>
+</div>

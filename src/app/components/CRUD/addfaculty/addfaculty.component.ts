@@ -48,10 +48,13 @@ export class AddfacultyComponent implements OnInit {
     let userId = this.facultyForm.value.userId;
     let name = this.facultyForm.value.name;
 
-    if(Id && userId && name)
+    if(Id && userId && name && this.facultyForm.valid)
     {
       this.faculty = new FacultySaptarshi(tempId, userId, name)
       this.facultyservice.addFaculty(this.faculty)
+    }
+    else {
+      this.facultyForm.markAllAsTouched(); // This will trigger validation messages for all fields
     }
   }
 }

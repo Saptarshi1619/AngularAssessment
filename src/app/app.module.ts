@@ -49,6 +49,12 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { AddtraineeComponent } from './components/CRUD/addtrainee/addtrainee.component';
+import { ViewtraineeComponent } from './components/CRUD/viewtrainee/viewtrainee.component';
+import { UpdatetraineeComponent } from './components/CRUD/updatetrainee/updatetrainee.component';
+import { AddcategoryComponent } from './components/CRUD/addcategory/addcategory.component';
+import { ViewcategoryComponent } from './components/CRUD/viewcategory/viewcategory.component';
+import { UpdatecategoryComponent } from './components/CRUD/updatecategory/updatecategory.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +77,12 @@ import {MatNativeDateModule} from '@angular/material/core';
     RegisterModalComponent,
     AddassessmentComponent,
     UpdateassessmentComponent,
+    AddtraineeComponent,
+    ViewtraineeComponent,
+    UpdatetraineeComponent,
+    AddcategoryComponent,
+    ViewcategoryComponent,
+    UpdatecategoryComponent,
   ],
   imports: [
     BrowserModule,

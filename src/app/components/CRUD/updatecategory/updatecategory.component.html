@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <h3 class="mb-4 text-center">Update Faculty</h3>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label class="form-label" for="id">Select a Category to Update</label>
+                    <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
+                        <option selected disabled>Select a Faculty</option>
+                        <option *ngFor="let p of arrCategory" [ngValue]="p.id">{{p.description}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="description">Description</label>
+                    <input id="description" type="text" class="form-control"
+                        formControlName="description" placeholder="Enter Description">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-4" type="submit">Update Category</button>
+    </form>
+</div>
