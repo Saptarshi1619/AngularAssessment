@@ -29,16 +29,16 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { ViewcourseComponent } from './components/CRUD/viewcourse/viewcourse.component';
-import { AddcourseComponent } from './components/CRUD/addcourse/addcourse.component';
-import { UpdatecourseComponent } from './components/CRUD/updatecourse/updatecourse.component';
-import { ViewfacultyComponent } from './components/CRUD/viewfaculty/viewfaculty.component';
-import { AddfacultyComponent } from './components/CRUD/addfaculty/addfaculty.component';
-import { UpdatefacultyComponent } from './components/CRUD/updatefaculty/updatefaculty.component';
+import { ViewcourseComponent } from './components/CRUD/course/viewcourse/viewcourse.component';
+import { AddcourseComponent } from './components/CRUD/course/addcourse/addcourse.component';
+import { UpdatecourseComponent } from './components/CRUD/course/updatecourse/updatecourse.component';
+import { ViewfacultyComponent } from './components/CRUD/faculty/viewfaculty/viewfaculty.component';
+import { AddfacultyComponent } from './components/CRUD/faculty/addfaculty/addfaculty.component';
+import { UpdatefacultyComponent } from './components/CRUD/faculty/updatefaculty/updatefaculty.component';
 import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { AddassessmentComponent } from './components/CRUD/addassessment/addassessment.component';
-import { UpdateassessmentComponent } from './components/CRUD/updateassessment/updateassessment.component';
+import { AddassessmentComponent } from './components/CRUD/assessment/addassessment/addassessment.component';
+import { UpdateassessmentComponent } from './components/CRUD/assessment/updateassessment/updateassessment.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -49,12 +49,15 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import { AddtraineeComponent } from './components/CRUD/addtrainee/addtrainee.component';
-import { ViewtraineeComponent } from './components/CRUD/viewtrainee/viewtrainee.component';
-import { UpdatetraineeComponent } from './components/CRUD/updatetrainee/updatetrainee.component';
-import { AddcategoryComponent } from './components/CRUD/addcategory/addcategory.component';
-import { ViewcategoryComponent } from './components/CRUD/viewcategory/viewcategory.component';
-import { UpdatecategoryComponent } from './components/CRUD/updatecategory/updatecategory.component';
+import { AddtraineeComponent } from './components/CRUD/trainee/addtrainee/addtrainee.component';
+import { ViewtraineeComponent } from './components/CRUD/trainee/viewtrainee/viewtrainee.component';
+import { UpdatetraineeComponent } from './components/CRUD/trainee/updatetrainee/updatetrainee.component';
+import { AddcategoryComponent } from './components/CRUD/category/addcategory/addcategory.component';
+import { ViewcategoryComponent } from './components/CRUD/category/viewcategory/viewcategory.component';
+import { UpdatecategoryComponent } from './components/CRUD/category/updatecategory/updatecategory.component';
+import { AddattendanceComponent } from './components/CRUD/attendance/addattendance/addattendance.component';
+import { ViewattendanceComponent } from './components/CRUD/viewattendance/viewattendance.component';
+import { UpdateattendanceComponent } from './components/CRUD/updateattendance/updateattendance.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +86,9 @@ import { UpdatecategoryComponent } from './components/CRUD/updatecategory/update
     AddcategoryComponent,
     ViewcategoryComponent,
     UpdatecategoryComponent,
+    AddattendanceComponent,
+    ViewattendanceComponent,
+    UpdateattendanceComponent,
   ],
   imports: [
     BrowserModule,
