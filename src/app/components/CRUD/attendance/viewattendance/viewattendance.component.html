@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let attendance of arrAttendance">
+            <div class="attendance-card mb-4">
+                <div class="attendance-card-body">
+                    <h5 class="attendance-card-title">Trainee ID: {{attendance.traineeId}}</h5>
+                    <h6 class="attendance-card-subtitle">Assessment ID: {{attendance.assessmentId}}</h6>
+                    <p class="attendance-card-id">Attendance ID: {{attendance.id}}</p>
+                    <p class="attendance-card-status">Attended: {{attendance.attended ? 'Yes' : 'No'}}</p>
+                    <p class="attendance-card-date">Date: {{attendance.date | date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

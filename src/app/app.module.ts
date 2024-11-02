@@ -56,8 +56,8 @@ import { AddcategoryComponent } from './components/CRUD/category/addcategory/add
 import { ViewcategoryComponent } from './components/CRUD/category/viewcategory/viewcategory.component';
 import { UpdatecategoryComponent } from './components/CRUD/category/updatecategory/updatecategory.component';
 import { AddattendanceComponent } from './components/CRUD/attendance/addattendance/addattendance.component';
-import { ViewattendanceComponent } from './components/CRUD/viewattendance/viewattendance.component';
-import { UpdateattendanceComponent } from './components/CRUD/updateattendance/updateattendance.component';
+import { ViewattendanceComponent } from './components/CRUD/attendance/viewattendance/viewattendance.component';
+import { UpdateattendanceComponent } from './components/CRUD/attendance/updateattendance/updateattendance.component';
 
 @NgModule({
   declarations: [
