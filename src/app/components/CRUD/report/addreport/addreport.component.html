@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <h3 class="mb-4 text-center">Add Trainee Report</h3>
+            
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="reportId">Report ID</label>
+                    <input id="reportId" type="text" class="form-control" formControlName="reportId" placeholder="Enter Report ID">
+                    <div *ngIf="reportForm.controls['reportId'].hasError('required') && reportForm.controls['reportId'].touched">
+                        Report ID is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="traineeId">Trainee ID</label>
+                    <input id="traineeId" type="text" class="form-control" formControlName="traineeId" placeholder="Enter Trainee ID">
+                    <div *ngIf="reportForm.controls['traineeId'].hasError('required') && reportForm.controls['traineeId'].touched">
+                        Trainee ID is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="assessmentId">Assessment ID</label>
+                    <input id="assessmentId" type="text" class="form-control" formControlName="assessmentId" placeholder="Enter Assessment ID">
+                    <div *ngIf="reportForm.controls['assessmentId'].hasError('required') && reportForm.controls['assessmentId'].touched">
+                        Assessment ID is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="comments">Comments</label>
+                    <textarea id="comments" class="form-control" formControlName="comments" placeholder="Enter Comments"></textarea>
+                    <div *ngIf="reportForm.controls['comments'].hasError('required') && reportForm.controls['comments'].touched">
+                        Comments are required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" class="form-control" formControlName="date">
+                    <div *ngIf="reportForm.controls['date'].hasError('required') && reportForm.controls['date'].touched">
+                        Date is required
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn btn-primary mt-4" type="submit">Add Report</button>
+    </form>
+</div>
+

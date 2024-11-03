@@ -1,0 +1,60 @@
+<div class="container mt-4">
+    <form [formGroup]="scoreForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <h3 class="mb-4 text-center">Add Assessment Score</h3>
+            
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="id">ID</label>
+                    <input id="id" type="text" class="form-control" formControlName="id" placeholder="Enter Score ID">
+                    <div *ngIf="scoreForm.controls['id'].hasError('required') && scoreForm.controls['id'].touched">
+                        ID is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="traineeId">Trainee ID</label>
+                    <input id="traineeId" type="text" class="form-control" formControlName="traineeId" placeholder="Enter Trainee ID">
+                    <div *ngIf="scoreForm.controls['traineeId'].hasError('required') && scoreForm.controls['traineeId'].touched">
+                        Trainee ID is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="assessmentId">Assessment ID</label>
+                    <input id="assessmentId" type="text" class="form-control" formControlName="assessmentId" placeholder="Enter Assessment ID">
+                    <div *ngIf="scoreForm.controls['assessmentId'].hasError('required') && scoreForm.controls['assessmentId'].touched">
+                        Assessment ID is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="score">Score</label>
+                    <input id="score" type="number" class="form-control" formControlName="score" placeholder="Enter Score">
+                    <div *ngIf="scoreForm.controls['score'].hasError('required') && scoreForm.controls['score'].touched">
+                        Score is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" class="form-control" formControlName="date">
+                    <div *ngIf="scoreForm.controls['date'].hasError('required') && scoreForm.controls['date'].touched">
+                        Date is required
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn btn-primary mt-4" type="submit">Add Score</button>
+    </form>
+</div>
+

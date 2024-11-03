@@ -59,6 +59,12 @@ import { AddattendanceComponent } from './components/CRUD/attendance/addattendan
 import { ViewattendanceComponent } from './components/CRUD/attendance/viewattendance/viewattendance.component';
 import { UpdateattendanceComponent } from './components/CRUD/attendance/updateattendance/updateattendance.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { ViewAssessmentscoreComponent } from './components/CRUD/assessmentscore/view-assessmentscore/view-assessmentscore.component';
+import { AddAssessmentscoreComponent } from './components/CRUD/assessmentscore/add-assessmentscore/add-assessmentscore.component';
+import { UpdateAssessmentscoreComponent } from './components/CRUD/assessmentscore/update-assessmentscore/update-assessmentscore.component';
+import { ViewreportComponent } from './components/CRUD/report/viewreport/viewreport.component';
+import { AddreportComponent } from './components/CRUD/report/addreport/addreport.component';
+import { UpdatereportComponent } from './components/CRUD/report/updatereport/updatereport.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +96,12 @@ import {MatDividerModule} from '@angular/material/divider';
     AddattendanceComponent,
     ViewattendanceComponent,
     UpdateattendanceComponent,
+    ViewAssessmentscoreComponent,
+    AddAssessmentscoreComponent,
+    UpdateAssessmentscoreComponent,
+    ViewreportComponent,
+    AddreportComponent,
+    UpdatereportComponent,
   ],
   imports: [
     BrowserModule,
