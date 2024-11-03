@@ -9,6 +9,9 @@
                         <option selected disabled>Select Attendance</option>
                         <option *ngFor="let a of arrAttendance" [ngValue]="a.id">{{a.traineeId}} - Assessment ID: {{a.assessmentId}}</option>
                     </select>
+                    <div *ngIf="attendanceForm.controls['id'].hasError('required') && attendanceForm.controls['id'].touched">
+                        <small class="text-danger">Attendance selection is required.</small>
+                    </div>
                 </div>
             </div>
 
@@ -17,6 +20,9 @@
                     <label for="traineeId">Trainee ID</label>
                     <input id="traineeId" type="text" class="form-control"
                         formControlName="traineeId" placeholder="Enter Trainee ID">
+                    <div *ngIf="attendanceForm.controls['traineeId'].hasError('required') && attendanceForm.controls['traineeId'].touched">
+                        <small class="text-danger">Trainee ID is required.</small>
+                    </div>
                 </div>
             </div>
 
@@ -25,6 +31,9 @@
                     <label for="assessmentId">Assessment ID</label>
                     <input id="assessmentId" type="text" class="form-control"
                         formControlName="assessmentId" placeholder="Enter Assessment ID">
+                    <div *ngIf="attendanceForm.controls['assessmentId'].hasError('required') && attendanceForm.controls['assessmentId'].touched">
+                        <small class="text-danger">Assessment ID is required.</small>
+                    </div>
                 </div>
             </div>
 
@@ -40,9 +49,13 @@
                     <label for="date">Date</label>
                     <input id="date" type="date" class="form-control"
                         formControlName="date">
+                    <div *ngIf="attendanceForm.controls['date'].hasError('required') && attendanceForm.controls['date'].touched">
+                        <small class="text-danger">Date is required.</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">Update Attendance</button>
+        <button class="btn btn-primary mt-4" type="submit" [disabled]="attendanceForm.invalid">Update Attendance</button>
     </form>
 </div>
+

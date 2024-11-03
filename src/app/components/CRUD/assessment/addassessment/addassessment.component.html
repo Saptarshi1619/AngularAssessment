@@ -1,96 +1,156 @@
 <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup" (ngSubmit)="saveFirstStepData(firstFormGroup)">
-          <mat-form-field appeareance="fill">
-              <mat-label>Assessment Number:</mat-label>
-              <input matInput placeholder="Number" formControlName="assessmentNoCtrl" required>
-          </mat-form-field>
-  
-          <mat-form-field appeareance="fill">
-              <mat-label>Assessment Name:</mat-label>
-              <input matInput placeholder="Name" formControlName="nameCtrl" required>
-          </mat-form-field>
-  
-  
-          <mat-form-field appearance="fill">
-            <mat-label>Assessment Date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="DateCtrl" required>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+    <!-- Step 1: Assessment Details -->
+    <mat-step [stepControl]="assessmentDetailsForm">
+        <form [formGroup]="assessmentDetailsForm" (ngSubmit)="saveFirstStepData(assessmentDetailsForm)">
+            <ng-template matStepLabel>Fill out the assessment name details</ng-template>
 
-          <mat-form-field appeareance="fill">
-              <mat-label>Assessment Time:</mat-label>
-              <input matInput placeholder="Time" formControlName="timeCtrl" required>
-          </mat-form-field>
-
-          <mat-form-field appeareance="fill">
-              <mat-label>Assessment Price:</mat-label>
-              <input matInput placeholder="Price" formControlName="priceCtrl" required>
-          </mat-form-field>
-  <div>
-      <button mat-button matStepperNext type="submit">save</button>
-  </div>
-  <div>
-      <button mat-button matStepperNext >Next</button>
-  </div>
-  
-  
-        </form>
-      </mat-step>
-
-
-      <mat-step [stepControl]="secondFormGroup">
-        <form class="basic-container" [formGroup]="questionForm" (ngSubmit)="saveSecondStepData(questionForm)">
-            <mat-toolbar color="primary">
-                Add/Remove multiple questions
-            </mat-toolbar>
-            <mat-form-field class="col-4">
-                <input matInput formControlName="text" placeholder="Question Text" required>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Enter name" formControlName="nameCtrl" required>
             </mat-form-field>
 
+            <mat-form-field appearance="fill">
+                <mat-label>Assessment Number</mat-label>
+                <input matInput placeholder="Enter assessment number" formControlName="assessmentNoCtrl" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Faculty ID</mat-label>
+                <input matInput placeholder="Enter faculty ID" formControlName="facultyIdCtrl" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" placeholder="Enter price" formControlName="priceCtrl" required>
+            </mat-form-field>
+
+            <div class="button-group">
+                <button mat-raised-button color="primary" type="submit">Save</button>
+                <button mat-button matStepperNext>NEXT</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <!-- Step 2: Assessment Time Details -->
+    <mat-step [stepControl]="assessmentTimeForm">
+        <form [formGroup]="assessmentTimeForm" (ngSubmit)="saveSecondStepData(assessmentTimeForm)">
+            <ng-template matStepLabel>Fill out the assessment time details</ng-template>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Assessment Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="assessmentDateCtrl" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Assessment Time</mat-label>
+                <input matInput placeholder="Enter assessment time" formControlName="assessmentTimeCtrl" required>
+            </mat-form-field>
+
+            <div class="button-group">
+                <button mat-raised-button color="primary" type="submit">Save</button>
+                <button mat-button matStepperNext>NEXT</button>
+                <button mat-raised-button matStepperPrevious>PREV</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <!-- Step 3: Question Details -->
+    <mat-step [stepControl]="questionFormGroup">
+        <form class="basic-container" [formGroup]="questionForm" (ngSubmit)="saveQuestionData(questionForm)">
+            <ng-template matStepLabel>Fill out the question details</ng-template>
+
+            <mat-toolbar color="primary" class="toolbar-header">Add/Remove Multiple Questions</mat-toolbar>
 
             <div formArrayName="questions">
-                <div class="row" *ngFor="let question of questionsArr().controls; let i = index" [formGroupName]="i">
-
-
-                   
-                    <mat-form-field class="col-4">
-                        <input matInput formControlName="opt1" placeholder="Options (comma separated)" required>
-                    </mat-form-field>
-                   
-                    <mat-form-field class="col-4">
-                        <input matInput formControlName="opt2" placeholder="Options (comma separated)" required>
-                    </mat-form-field>
-                   
-                    <mat-form-field class="col-4">
-                        <input matInput formControlName="opt3" placeholder="Options (comma separated)" required>
-                    </mat-form-field>
-                   
-                    <mat-form-field class="col-4">
-                        <input matInput formControlName="opt4" placeholder="Options (comma separated)" required>
+                <div class="question-row" *ngFor="let question of questionsArr().controls; let i = index"
+                    [formGroupName]="i">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Question Text</mat-label>
+                        <input matInput formControlName="questionText" placeholder="Question Text" required>
                     </mat-form-field>
 
+                    <div class="options-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 1</mat-label>
+                            <input matInput formControlName="opt1" placeholder="Option 1" required>
+                        </mat-form-field>
 
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 2</mat-label>
+                            <input matInput formControlName="opt2" placeholder="Option 2" required>
+                        </mat-form-field>
 
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 3</mat-label>
+                            <input matInput formControlName="opt3" placeholder="Option 3" required>
+                        </mat-form-field>
 
-                    <div class="col-2">
-                        <button class="float-left" mat-icon-button color="primary" aria-label="Remove"
-                            (click)="removeOrClearQuestion(i)" matTooltip="Remove">
-                            <mat-icon>highlight_off</mat-icon>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 4</mat-label>
+                            <input matInput formControlName="opt4" placeholder="Option 4" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Answer</mat-label>
+                            <input matInput formControlName="answer" placeholder="Answer" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Points</mat-label>
+                            <input matInput formControlName="points" placeholder="Points" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="question-actions">
+                        <button mat-icon-button color="warn" (click)="removeQuestion(i)" matTooltip="Remove Question">
+                            <mat-icon>delete</mat-icon>
                         </button>
-                        <button class="float-left" mat-icon-button color="primary" aria-label="Add"
-                            (click)="addQuestionFormGroup()" matTooltip="Add">
-                            <mat-icon>add_circle_outline</mat-icon>
+                        <button mat-icon-button color="primary" (click)="addQuestionFormGroup()"
+                            matTooltip="Add Question">
+                            <mat-icon>add</mat-icon>
                         </button>
                     </div>
                 </div>
-               
             </div>
-            <div>
-                <button mat-button matStepperNext type="submit">Save</button>
+
+            <div class="button-group">
+                <button mat-raised-button color="primary" type="submit">Save Questions</button>
+                <button mat-raised-button matStepperPrevious>PREV</button>
+                <button mat-button matStepperNext>NEXT</button>
             </div>
         </form>
+    </mat-step>
+
+    <!-- Step 4: Confirmation -->
+    <!-- Step 4: Confirmation -->
+    <mat-step>
+        <ng-template matStepLabel>Confirmation</ng-template>
+        <p>Please review your assessment details before uploading.</p>
+        <div>
+            <h3>Assessment Details:</h3>
+            <p><strong>Name:</strong> {{ assessmentDetailsForm.value.nameCtrl }}</p>
+            <p><strong>Assessment Number:</strong> {{ assessmentDetailsForm.value.assessmentNoCtrl }}</p>
+            <p><strong>Faculty ID:</strong> {{ assessmentDetailsForm.value.facultyIdCtrl }}</p>
+            <p><strong>Price:</strong> {{ assessmentDetailsForm.value.priceCtrl }}</p>
+            <p><strong>Assessment Date:</strong> {{ assessmentTimeForm.value.assessmentDateCtrl | date }}</p>
+            <p><strong>Assessment Time:</strong> {{ assessmentTimeForm.value.assessmentTimeCtrl }}</p>
+            <h4>Questions:</h4>
+            <div *ngFor="let question of questionsArr().controls">
+                <p>{{ question.get('questionText')?.value }}</p>
+                <p><strong>Options:</strong> {{ question.get('opt1')?.value }}, {{ question.get('opt2')?.value }}, {{
+                    question.get('opt3')?.value }}, {{ question.get('opt4')?.value }}</p>
+                <p><strong>Answer:</strong> {{ question.get('answer')?.value }}</p>
+                <p><strong>Points:</strong> {{ question.get('points')?.value }}</p>
+            </div>
+        </div>
+        <div class="button-group">
+            <button mat-raised-button matStepperPrevious>PREV</button>
+            <button mat-raised-button color="primary" (click)="createAssessment()">Upload</button>
+        </div>
     </mat-step>
 
 </mat-stepper>

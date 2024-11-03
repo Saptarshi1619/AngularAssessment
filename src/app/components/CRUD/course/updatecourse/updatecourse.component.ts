@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CourseSaptarshi } from '../../../../Models/coursesaptarshi';
 import { CourseService } from '../../../../services/course.service';
 
@@ -24,15 +24,24 @@ export class UpdatecourseComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.courseForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      description: ['', [Validators.required, Validators.minLength(10)]]
+    });
+  }
+
   onSubmit(){
     this.submitted = true;
     let id = this.courseForm.value.id;
     let name = this.courseForm.value.name;
     let description = this.courseForm.value.description;
 
-    if(id && name && description){
+    if(id && name && description && this.courseForm.valid){
       this.course = new CourseSaptarshi(this.idUpdated, name,  description)
       this.courseService.updateCourse(this.course);
+    }else{
+      this.courseForm.markAllAsTouched();
     }
   }
 

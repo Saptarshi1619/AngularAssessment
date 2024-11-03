@@ -9,25 +9,36 @@
                         <option selected disabled>Select a Faculty</option>
                         <option *ngFor="let p of arrFaculty" [ngValue]="p.id">{{p.name}}</option>
                     </select>
+                    <div *ngIf="facultyForm.controls['id'].hasError('required') && facultyForm.controls['id'].touched">
+                        <small class="text-danger">Faculty selection is required.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row mt-3">
                 <div class="col-sm-6">
                     <label for="userId">User ID</label>
-                    <input id="userId" type="text" class="form-control"
-                        formControlName="userId" placeholder="Enter User ID">
+                    <input id="userId" type="text" class="form-control" formControlName="userId" placeholder="Enter User ID">
+                    <div *ngIf="facultyForm.controls['userId'].hasError('required') && facultyForm.controls['userId'].touched">
+                        <small class="text-danger">User ID is required.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row mt-3">
                 <div class="col-sm-6">
                     <label for="name">Name</label>
-                    <input id="name" type="text" class="form-control"
-                        formControlName="name" placeholder="Enter Faculty Name">
+                    <input id="name" type="text" class="form-control" formControlName="name" placeholder="Enter Faculty Name">
+                    <div *ngIf="facultyForm.controls['name'].hasError('required') && facultyForm.controls['name'].touched">
+                        <small class="text-danger">Name is required.</small>
+                    </div>
+                    <div *ngIf="facultyForm.controls['name'].hasError('minlength') && facultyForm.controls['name'].touched">
+                        <small class="text-danger">Name must be at least 3 characters long.</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">Update Faculty</button>
+        <button class="btn btn-primary mt-4" type="submit" [disabled]="facultyForm.invalid">Update Faculty</button>
     </form>
 </div>
+

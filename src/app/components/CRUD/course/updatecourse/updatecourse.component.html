@@ -9,6 +9,9 @@
                         <option selected disabled>Select a Course</option>
                         <option *ngFor="let p of arrCourse" [ngValue]="p.id">{{p.name}}</option>
                     </select>
+                    <div *ngIf="courseForm.controls['id'].hasError('required') && courseForm.controls['id'].touched">
+                        <small class="text-danger">Course selection is required.</small>
+                    </div>
                 </div>
             </div>
 
@@ -17,9 +20,15 @@
                     <label for="description">Description</label>
                     <input id="description" type="text" class="form-control"
                         formControlName="description" placeholder="Enter Course Description">
+                    <div *ngIf="courseForm.controls['description'].hasError('required') && courseForm.controls['description'].touched">
+                        <small class="text-danger">Description is required.</small>
+                    </div>
+                    <div *ngIf="courseForm.controls['description'].hasError('minlength') && courseForm.controls['description'].touched">
+                        <small class="text-danger">Description must be at least 10 characters long.</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary mt-3" type="submit">Update</button>
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="courseForm.invalid">Update</button>
     </form>
 </div>

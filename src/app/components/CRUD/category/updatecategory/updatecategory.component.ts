@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategorySaptarshi } from '../../../../Models/categorysaptarshi';
 import { CourseCategoryService } from '../../../../services/course-category.service';
 
@@ -23,14 +23,23 @@ export class UpdatecategoryComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.categoryForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      description: ['', [Validators.required, Validators.minLength(10)]]
+    });
+  }
+
   onSubmit(){
     this.submitted = true;
     let id = this.categoryForm.value.id;
     let description = this.categoryForm.value.name;
 
-    if(id && description){
+    if(id && description && this.categoryForm.valid){
       this.category = new CategorySaptarshi(this.idUpdated, description)
       this.categoryService.updateCategory(this.category);
+    }else{
+      this.categoryForm.markAllAsTouched();
     }
   }
 

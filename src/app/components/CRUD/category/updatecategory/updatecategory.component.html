@@ -1,14 +1,17 @@
 <div class="container mt-4">
     <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <h3 class="mb-4 text-center">Update Faculty</h3>
+            <h3 class="mb-4 text-center">Update Category</h3>
             <div class="form-row">
                 <div class="col-sm-6">
                     <label class="form-label" for="id">Select a Category to Update</label>
                     <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
-                        <option selected disabled>Select a Faculty</option>
+                        <option selected disabled>Select a Category</option>
                         <option *ngFor="let p of arrCategory" [ngValue]="p.id">{{p.description}}</option>
                     </select>
+                    <div *ngIf="categoryForm.controls['id'].hasError('required') && categoryForm.controls['id'].touched">
+                        <small class="text-danger">Category selection is required.</small>
+                    </div>
                 </div>
             </div>
 
@@ -17,9 +20,15 @@
                     <label for="description">Description</label>
                     <input id="description" type="text" class="form-control"
                         formControlName="description" placeholder="Enter Description">
+                    <div *ngIf="categoryForm.controls['description'].hasError('required') && categoryForm.controls['description'].touched">
+                        <small class="text-danger">Description is required.</small>
+                    </div>
+                    <div *ngIf="categoryForm.controls['description'].hasError('minlength') && categoryForm.controls['description'].touched">
+                        <small class="text-danger">Description must be at least 10 characters long.</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">Update Category</button>
+        <button class="btn btn-primary mt-4" type="submit" [disabled]="categoryForm.invalid">Update Category</button>
     </form>
 </div>

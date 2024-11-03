@@ -58,6 +58,7 @@ import { UpdatecategoryComponent } from './components/CRUD/category/updatecatego
 import { AddattendanceComponent } from './components/CRUD/attendance/addattendance/addattendance.component';
 import { ViewattendanceComponent } from './components/CRUD/attendance/viewattendance/viewattendance.component';
 import { UpdateattendanceComponent } from './components/CRUD/attendance/updateattendance/updateattendance.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { UpdateattendanceComponent } from './components/CRUD/attendance/updateat
     MatSelectModule,
     MatToolbarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDividerModule
   ],
   providers: [
     provideClientHydration(),

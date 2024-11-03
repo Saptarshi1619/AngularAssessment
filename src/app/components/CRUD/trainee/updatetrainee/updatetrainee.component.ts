@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TraineeSaptarshi } from '../../../../Models/traineesaptarshi';
 import { TraineeService } from '../../../../services/trainee.service';
 
@@ -24,15 +24,25 @@ export class UpdatetraineeComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.traineeForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      userId: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]]
+    });
+  }
+
   onSubmit(){
     this.submitted = true;
     let id = this.traineeForm.value.id;
     let userId = this.traineeForm.value.userId;
     let name = this.traineeForm.value.name;
 
-    if(id && userId && name){
+    if(id && userId && name && this.traineeForm.valid){
       this.trainee = new TraineeSaptarshi(this.idUpdated, userId,  name)
       this.traineeService.updateTrainee(this.trainee);
+    }else{
+      this.traineeForm.markAllAsTouched();
     }
   }
 

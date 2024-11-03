@@ -109,14 +109,14 @@ export class ViewAssessmentComponent{
           'What is the capital of France?',
           ['Paris', 'Berlin', 'Madrid', 'Rome'],
           'Paris',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'Explain the theory of relativity.',
-          [],
-          '',
-          'Subjective'
+          'Which planet is known as the Red Planet?',
+          ['Earth', 'Mars', 'Jupiter', 'Saturn'],
+          'Mars',
+          '5'
         ),
       ],
       101,
@@ -135,9 +135,15 @@ export class ViewAssessmentComponent{
           'Which planet is known as the Red Planet?',
           ['Earth', 'Mars', 'Jupiter', 'Saturn'],
           'Mars',
-          'Objective'
+          '5'
         ),
-        new Question(2, 'Describe your favorite book.', [], '', 'Subjective'),
+        new Question(
+          2,
+          'What is H2O commonly known as?',
+          ['Water', 'Hydrogen', 'Oxygen', 'Carbon Dioxide'],
+          'Water',
+          '5'
+        ),
       ],
       102,
       true,
@@ -155,14 +161,14 @@ export class ViewAssessmentComponent{
           'What is H2O commonly known as?',
           ['Water', 'Hydrogen', 'Oxygen', 'Carbon Dioxide'],
           'Water',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What are the main components of a computer?',
-          [],
-          '',
-          'Subjective'
+          'Who wrote "To Kill a Mockingbird"?',
+          ['Harper Lee', 'Mark Twain', 'J.K. Rowling', 'Ernest Hemingway'],
+          'Harper Lee',
+          '5'
         ),
       ],
       103,
@@ -181,14 +187,14 @@ export class ViewAssessmentComponent{
           'Who wrote "To Kill a Mockingbird"?',
           ['Harper Lee', 'Mark Twain', 'J.K. Rowling', 'Ernest Hemingway'],
           'Harper Lee',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What are your thoughts on artificial intelligence?',
-          [],
-          '',
-          'Subjective'
+          'What is the powerhouse of the cell?',
+          ['Nucleus', 'Mitochondria', 'Ribosome', 'Endoplasmic Reticulum'],
+          'Mitochondria',
+          '5'
         ),
       ],
       104,
@@ -207,14 +213,14 @@ export class ViewAssessmentComponent{
           'What is the powerhouse of the cell?',
           ['Nucleus', 'Mitochondria', 'Ribosome', 'Endoplasmic Reticulum'],
           'Mitochondria',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'Explain the importance of biodiversity.',
-          [],
-          '',
-          'Subjective'
+          'Which element has the chemical symbol O?',
+          ['Oxygen', 'Gold', 'Silver', 'Iron'],
+          'Oxygen',
+          '5'
         ),
       ],
       105,
@@ -233,14 +239,14 @@ export class ViewAssessmentComponent{
           'Which element has the chemical symbol O?',
           ['Oxygen', 'Gold', 'Silver', 'Iron'],
           'Oxygen',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'Discuss your favorite historical figure.',
-          [],
-          '',
-          'Subjective'
+          'What is the largest mammal in the world?',
+          ['Elephant', 'Blue Whale', 'Great White Shark', 'Giraffe'],
+          'Blue Whale',
+          '5'
         ),
       ],
       106,
@@ -259,14 +265,14 @@ export class ViewAssessmentComponent{
           'What is the largest mammal in the world?',
           ['Elephant', 'Blue Whale', 'Great White Shark', 'Giraffe'],
           'Blue Whale',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What are the benefits of renewable energy?',
-          [],
-          '',
-          'Subjective'
+          'What is the currency of Japan?',
+          ['Yen', 'Won', 'Dollar', 'Euro'],
+          'Yen',
+          '5'
         ),
       ],
       107,
@@ -285,14 +291,14 @@ export class ViewAssessmentComponent{
           'What is the currency of Japan?',
           ['Yen', 'Won', 'Dollar', 'Euro'],
           'Yen',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'Describe a memorable trip you have taken.',
-          [],
-          '',
-          'Subjective'
+          'Who painted the Mona Lisa?',
+          ['Vincent van Gogh', 'Pablo Picasso', 'Leonardo da Vinci', 'Claude Monet'],
+          'Leonardo da Vinci',
+          '5'
         ),
       ],
       108,
@@ -309,21 +315,16 @@ export class ViewAssessmentComponent{
         new Question(
           1,
           'Who painted the Mona Lisa?',
-          [
-            'Vincent van Gogh',
-            'Pablo Picasso',
-            'Leonardo da Vinci',
-            'Claude Monet',
-          ],
+          ['Vincent van Gogh', 'Pablo Picasso', 'Leonardo da Vinci', 'Claude Monet'],
           'Leonardo da Vinci',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What is the impact of climate change?',
-          [],
-          '',
-          'Subjective'
+          'What is the boiling point of water?',
+          ['100°C', '90°C', '80°C', '110°C'],
+          '100°C',
+          '5'
         ),
       ],
       109,
@@ -342,9 +343,15 @@ export class ViewAssessmentComponent{
           'What is the boiling point of water?',
           ['100°C', '90°C', '80°C', '110°C'],
           '100°C',
-          'Objective'
+          '5'
         ),
-        new Question(2, 'How do you define success?', [], '', 'Subjective'),
+        new Question(
+          2,
+          'Which gas do plants absorb from the atmosphere?',
+          ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Helium'],
+          'Carbon Dioxide',
+          '5'
+        ),
       ],
       110,
       true,
@@ -362,14 +369,14 @@ export class ViewAssessmentComponent{
           'Which gas do plants absorb from the atmosphere?',
           ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Helium'],
           'Carbon Dioxide',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What challenges do you face in your studies?',
-          [],
-          '',
-          'Subjective'
+          'Who is known as the father of modern physics?',
+          ['Isaac Newton', 'Albert Einstein', 'Niels Bohr', 'Galileo Galilei'],
+          'Albert Einstein',
+          '5'
         ),
       ],
       111,
@@ -388,9 +395,15 @@ export class ViewAssessmentComponent{
           'Who is known as the father of modern physics?',
           ['Isaac Newton', 'Albert Einstein', 'Niels Bohr', 'Galileo Galilei'],
           'Albert Einstein',
-          'Objective'
+          '5'
         ),
-        new Question(2, 'What motivates you to learn?', [], '', 'Subjective'),
+        new Question(
+          2,
+          'What is the smallest prime number?',
+          ['0', '1', '2', '3'],
+          '2',
+          '5'
+        ),
       ],
       112,
       false,
@@ -408,14 +421,14 @@ export class ViewAssessmentComponent{
           'What is the smallest prime number?',
           ['0', '1', '2', '3'],
           '2',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'Describe a significant moment in your life.',
-          [],
-          '',
-          'Subjective'
+          'Which country is famous for the Eiffel Tower?',
+          ['USA', 'UK', 'France', 'Italy'],
+          'France',
+          '5'
         ),
       ],
       113,
@@ -434,19 +447,19 @@ export class ViewAssessmentComponent{
           'Which country is famous for the Eiffel Tower?',
           ['USA', 'UK', 'France', 'Italy'],
           'France',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What skills would you like to develop in the future?',
-          [],
-          '',
-          'Subjective'
+          'What is the main language spoken in Brazil?',
+          ['Spanish', 'Portuguese', 'English', 'French'],
+          'Portuguese',
+          '5'
         ),
       ],
       114,
-      false,
-      40
+      true,
+      60
     ),
     new Assessment(
       15,
@@ -460,14 +473,14 @@ export class ViewAssessmentComponent{
           'What is the main language spoken in Brazil?',
           ['Spanish', 'Portuguese', 'English', 'French'],
           'Portuguese',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What do you think is the most pressing global issue?',
-          [],
-          '',
-          'Subjective'
+          'What is the hardest natural substance on Earth?',
+          ['Gold', 'Diamond', 'Iron', 'Graphite'],
+          'Diamond',
+          '5'
         ),
       ],
       115,
@@ -486,14 +499,14 @@ export class ViewAssessmentComponent{
           'What is the hardest natural substance on Earth?',
           ['Gold', 'Diamond', 'Iron', 'Graphite'],
           'Diamond',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'How do you balance your personal and academic life?',
-          [],
-          '',
-          'Subjective'
+          'Which element is essential for human respiration?',
+          ['Oxygen', 'Carbon', 'Nitrogen', 'Hydrogen'],
+          'Oxygen',
+          '5'
         ),
       ],
       116,
@@ -512,14 +525,14 @@ export class ViewAssessmentComponent{
           'Which element is essential for human respiration?',
           ['Oxygen', 'Carbon', 'Nitrogen', 'Hydrogen'],
           'Oxygen',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What role does technology play in education?',
-          [],
-          '',
-          'Subjective'
+          'What is the capital of Australia?',
+          ['Sydney', 'Canberra', 'Melbourne', 'Brisbane'],
+          'Canberra',
+          '5'
         ),
       ],
       117,
@@ -538,14 +551,14 @@ export class ViewAssessmentComponent{
           'What is the capital of Australia?',
           ['Sydney', 'Canberra', 'Melbourne', 'Brisbane'],
           'Canberra',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What are your future aspirations?',
-          [],
-          '',
-          'Subjective'
+          'What gas is produced by burning fossil fuels?',
+          ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Sulfur Dioxide'],
+          'Carbon Dioxide',
+          '5'
         ),
       ],
       118,
@@ -564,14 +577,14 @@ export class ViewAssessmentComponent{
           'What gas is produced by burning fossil fuels?',
           ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Sulfur Dioxide'],
           'Carbon Dioxide',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What does teamwork mean to you?',
-          [],
-          '',
-          'Subjective'
+          'Which ocean is the largest?',
+          ['Atlantic', 'Indian', 'Arctic', 'Pacific'],
+          'Pacific',
+          '5'
         ),
       ],
       119,
@@ -590,20 +603,20 @@ export class ViewAssessmentComponent{
           'Which ocean is the largest?',
           ['Atlantic', 'Indian', 'Arctic', 'Pacific'],
           'Pacific',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
-          'What is your opinion on online education?',
-          [],
-          '',
-          'Subjective'
+          'What is the capital of France?',
+          ['Paris', 'Berlin', 'Madrid', 'Rome'],
+          'Paris',
+          '5'
         ),
       ],
       120,
       false,
       70
-    ),
+    )    
   ];
   //#endregion
 

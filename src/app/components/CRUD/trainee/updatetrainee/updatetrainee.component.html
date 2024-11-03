@@ -1,33 +1,43 @@
 <div class="container mt-4">
     <form [formGroup]="traineeForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <h3 class="mb-4 text-center">Update Faculty</h3>
+            <h3 class="mb-4 text-center">Update Trainee</h3>
             <div class="form-row">
                 <div class="col-sm-6">
-                    <label class="form-label" for="id">Select a Faculty to Update</label>
+                    <label class="form-label" for="id">Select a Trainee to Update</label>
                     <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
-                        <option selected disabled>Select a Faculty</option>
+                        <option selected disabled>Select a Trainee</option>
                         <option *ngFor="let p of arrTrainee" [ngValue]="p.id">{{p.name}}</option>
                     </select>
+                    <div *ngIf="traineeForm.controls['id'].hasError('required') && traineeForm.controls['id'].touched">
+                        <small class="text-danger">Trainee selection is required.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row mt-3">
                 <div class="col-sm-6">
                     <label for="userId">User ID</label>
-                    <input id="userId" type="text" class="form-control"
-                        formControlName="userId" placeholder="Enter User ID">
+                    <input id="userId" type="text" class="form-control" formControlName="userId" placeholder="Enter User ID">
+                    <div *ngIf="traineeForm.controls['userId'].hasError('required') && traineeForm.controls['userId'].touched">
+                        <small class="text-danger">User ID is required.</small>
+                    </div>
                 </div>
             </div>
 
             <div class="form-row mt-3">
                 <div class="col-sm-6">
                     <label for="name">Name</label>
-                    <input id="name" type="text" class="form-control"
-                        formControlName="name" placeholder="Enter Faculty Name">
+                    <input id="name" type="text" class="form-control" formControlName="name" placeholder="Enter Trainee Name">
+                    <div *ngIf="traineeForm.controls['name'].hasError('required') && traineeForm.controls['name'].touched">
+                        <small class="text-danger">Name is required.</small>
+                    </div>
+                    <div *ngIf="traineeForm.controls['name'].hasError('minlength') && traineeForm.controls['name'].touched">
+                        <small class="text-danger">Name must be at least 3 characters long.</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">Update Trainee</button>
+        <button class="btn btn-primary mt-4" type="submit" [disabled]="traineeForm.invalid">Update Trainee</button>
     </form>
 </div>

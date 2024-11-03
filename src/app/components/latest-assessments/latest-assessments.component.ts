@@ -21,14 +21,14 @@ export class LatestAssessmentsComponent {
           'What is the capital of France?',
           ['Paris', 'Berlin', 'Madrid', 'Rome'],
           'Paris',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
           'Explain the theory of relativity.',
           [],
           '',
-          'Subjective'
+          '5'
         ),
       ],
       101,
@@ -47,9 +47,10 @@ export class LatestAssessmentsComponent {
           'Which planet is known as the Red Planet?',
           ['Earth', 'Mars', 'Jupiter', 'Saturn'],
           'Mars',
-          'Objective'
+          '5'
         ),
-        new Question(2, 'Describe your favorite book.', [], '', 'Subjective'),
+        new Question(2, 'Describe your favorite book.', [], '',
+          '5'),
       ],
       102,
       true,
@@ -67,14 +68,14 @@ export class LatestAssessmentsComponent {
           'What is H2O commonly known as?',
           ['Water', 'Hydrogen', 'Oxygen', 'Carbon Dioxide'],
           'Water',
-          'Objective'
+          '5'
         ),
         new Question(
           2,
           'What are the main components of a computer?',
           [],
           '',
-          'Subjective'
+          '5'
         ),
       ],
       103,

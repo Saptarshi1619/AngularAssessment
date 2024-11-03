@@ -16,15 +16,11 @@
                     <strong>Q{{ question.id }}:</strong> {{ question.qText }}<br />
 
 
-                    <ng-container *ngIf="question.qType === 'Objective'; else subjectiveTemplate">
+                    <ng-container>
                         <strong>Options:</strong> {{ question.options.join(', ') }}<br />
                         <strong>Answer:</strong> {{ question.answer }}<br />
                     </ng-container>
 
-                    <!-- Only show for Subjective type -->
-                    <ng-template #subjectiveTemplate>
-                        <strong>Type:</strong> {{ question.qType }}
-                    </ng-template>
                 </li>
             </ul>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FacultySaptarshi } from '../../../../Models/facultysaptarshi';
 import { FacultyService } from '../../../../services/faculty.service';
 
@@ -24,15 +24,25 @@ export class UpdatefacultyComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.facultyForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      userId: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]]
+    });
+  }
+
   onSubmit(){
     this.submitted = true;
     let id = this.facultyForm.value.id;
     let userId = this.facultyForm.value.userId;
     let name = this.facultyForm.value.name;
 
-    if(id && userId && name){
+    if(id && userId && name && this.facultyForm.valid){
       this.faculty = new FacultySaptarshi(this.idUpdated, userId,  name)
       this.facultyService.updateFaculty(this.faculty);
+    }else {
+      this.facultyForm.markAllAsTouched();
     }
   }
 
