@@ -110,8 +110,7 @@ export class AddassessmentComponent {
     this.assessServ.getAllAssessments().subscribe(data=>{
       this.assessment.id = data.length + 1
       console.log("id generated",this.assessment.id)
-    })
-    this.assessment.assessmentName = assessmentDetails.nameCtrl;
+      this.assessment.assessmentName = assessmentDetails.nameCtrl;
     this.assessment.assessmentNo = assessmentDetails.assessmentNoCtrl;
     this.assessment.assessmentDate = assessmentTime.assessmentDateCtrl;
     this.assessment.assessmentTime = assessmentTime.assessmentTimeCtrl;
@@ -135,5 +134,7 @@ export class AddassessmentComponent {
     this.assessServ.addAssessment(this.assessment).subscribe(data=>{
 
     });
+    })
+    
   }
 }

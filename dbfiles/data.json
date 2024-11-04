@@ -361,11 +361,11 @@
       "price": 70
     },
     {
-      "id": 0,
+      "id": 12,
       "assessmentNo": "A11",
       "assessmentName": "Some Assessment",
       "assessmentDate": "2024-11-05T18:30:00.000Z",
-      "assessmentTime": "12:00PM",
+      "assessmentTime": "12:22",
       "questions": [
         {
           "id": 1,
@@ -382,7 +382,7 @@
       ],
       "facultyId": "111",
       "isActive": true,
-      "price": 86
+      "price": 54
     }
   ]
 }
