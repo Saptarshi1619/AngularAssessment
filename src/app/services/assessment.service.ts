@@ -556,38 +556,28 @@ export class AssessmentService {
     );
   }
 
-  getAssessmentById(id:number):Assessment{
-    let a = new Assessment(
-      0,
-    '',
-    '',
-    new Date(),
-    '',
-    [new Question(0, '', [], '','')],
-    0,
-    true,
-    0
-    )
-    for(var i=0; i<this.assessments.length; i++){
-      if(this.assessments[i].id == id){
-        console.log(this.assessments[i])
-        return this.assessments[i]
-      }
-    }
-    return a
-  }
-
-  addAssessment(assessment: Assessment): void{
-    this.assessments.push(assessment)
-  }
-
-  updateAssessment(updatedAssessment: Assessment): void {
-    const index = this.assessments.findIndex(
-      (assessment) => assessment.id === updatedAssessment.id
+  getAssessmentById(id:number):Observable<Assessment>{
+    return this.httpClient.get<Assessment>(this.baseURL + '/assessments/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
     );
-    if (index !== -1) {
-      this.assessments[index] = updatedAssessment;
-    }
+  }
+
+  addAssessment(assessment: Assessment): Observable<Assessment>{
+    return this.httpClient.post<Assessment>(this.baseURL + '/assessments',JSON.stringify(assessment),this.httpHeader)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    )
+  }
+
+  updateAssessment(p: Assessment): Observable<Assessment> {
+    return this.httpClient.put<Assessment>(this.baseURL + '/assessments/' + p.id, JSON.stringify(p),this.httpHeader)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    );
   }
 
   httpError(error:HttpErrorResponse){

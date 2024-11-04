@@ -1,56 +1,388 @@
 {
-    "assessments": [
+  "assessments": [
+    {
+      "id": 1,
+      "assessmentNo": "A01",
+      "assessmentName": "General Knowledge Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "10:00 AM",
+      "questions": [
         {
-            "id": 1,
-            "assessmentNo": "A01",
-            "assessmentName": "General Knowledge Assessment",
-            "assessmentDate": "2023-11-04T00:00:00Z",
-            "assessmentTime": "10:00 AM",
-            "questions": [
-                {
-                    "id": 1,
-                    "question": "What is the capital of France?",
-                    "options": ["Paris", "Berlin", "Madrid", "Rome"],
-                    "answer": "Paris",
-                    "points": "5"
-                },
-                {
-                    "id": 2,
-                    "qText": "Which planet is known as the Red Planet?",
-                    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-                    "answer": "Mars",
-                    "points": "5"
-                }
-            ],
-            "facultyId": 101,
-            "isActive": true,
-            "price": 40
+          "id": 1,
+          "qText": "What is the capital of France?",
+          "options": [
+            "Paris",
+            "Berlin",
+            "Madrid",
+            "Rome"
+          ],
+          "answer": "Paris",
+          "points": "5"
         },
         {
-            "id": 2,
-            "assessmentNo": "A02",
-            "assessmentName": "General Knowledge Assessment",
-            "assessmentDate": "2023-11-04T00:00:00Z",
-            "assessmentTime": "12:00 PM",
-            "questions": [
-                {
-                    "id": 1,
-                    "qText": "Which planet is known as the Red Planet?",
-                    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-                    "answer": "Mars",
-                    "points": "5"
-                },
-                {
-                    "id": 2,
-                    "question": "What is H2O commonly known as?",
-                    "options": ["Water", "Hydrogen", "Oxygen", "Carbon Dioxide"],
-                    "answer": "Water",
-                    "points": "5"
-                }
-            ],
-            "facultyId": 102,
-            "isActive": true,
-            "price": 50
+          "id": 2,
+          "qText": "Which planet is known as the Red Planet?",
+          "options": [
+            "Earth",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+          ],
+          "answer": "Mars",
+          "points": "5"
         }
-    ]
+      ],
+      "facultyId": 101,
+      "isActive": true,
+      "price": 40
+    },
+    {
+      "id": 2,
+      "assessmentNo": "A02",
+      "assessmentName": "General Knowledge Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "12:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "Which planet is known as the Red Planet?",
+          "options": [
+            "Earth",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+          ],
+          "answer": "Mars",
+          "points": "5"
+        },
+        {
+          "id": 2,
+          "qText": "What is H2O commonly known as?",
+          "options": [
+            "Water",
+            "Hydrogen",
+            "Oxygen",
+            "Carbon Dioxide"
+          ],
+          "answer": "Water",
+          "points": "5"
+        }
+      ],
+      "facultyId": 102,
+      "isActive": true,
+      "price": 50
+    },
+    {
+      "id": 3,
+      "assessmentNo": "A03",
+      "assessmentName": "Science Basics Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "1:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "What is H2O commonly known as?",
+          "options": [
+            "Water",
+            "Hydrogen",
+            "Oxygen",
+            "Carbon Dioxide"
+          ],
+          "answer": "Water",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "Who wrote 'To Kill a Mockingbird'?",
+          "options": [
+            "Harper Lee",
+            "Mark Twain",
+            "J.K. Rowling",
+            "Ernest Hemingway"
+          ],
+          "answer": "Harper Lee",
+          "points": 5
+        }
+      ],
+      "facultyId": 103,
+      "isActive": false,
+      "price": 50
+    },
+    {
+      "id": 4,
+      "assessmentNo": "A04",
+      "assessmentName": "Environmental Science Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "2:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "Who wrote 'To Kill a Mockingbird'?",
+          "options": [
+            "Harper Lee",
+            "Mark Twain",
+            "J.K. Rowling",
+            "Ernest Hemingway"
+          ],
+          "answer": "Harper Lee",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "What is the powerhouse of the cell?",
+          "options": [
+            "Nucleus",
+            "Mitochondria",
+            "Ribosome",
+            "Endoplasmic Reticulum"
+          ],
+          "answer": "Mitochondria",
+          "points": 5
+        }
+      ],
+      "facultyId": 104,
+      "isActive": false,
+      "price": 60
+    },
+    {
+      "id": 5,
+      "assessmentNo": "A05",
+      "assessmentName": "Environmental Science Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "3:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "What is the powerhouse of the cell?",
+          "options": [
+            "Nucleus",
+            "Mitochondria",
+            "Ribosome",
+            "Endoplasmic Reticulum"
+          ],
+          "answer": "Mitochondria",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "Which element has the chemical symbol O?",
+          "options": [
+            "Oxygen",
+            "Gold",
+            "Silver",
+            "Iron"
+          ],
+          "answer": "Oxygen",
+          "points": 5
+        }
+      ],
+      "facultyId": 105,
+      "isActive": true,
+      "price": 40
+    },
+    {
+      "id": 6,
+      "assessmentNo": "A06",
+      "assessmentName": "Math Basics Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "4:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "Which element has the chemical symbol O?",
+          "options": [
+            "Oxygen",
+            "Gold",
+            "Silver",
+            "Iron"
+          ],
+          "answer": "Oxygen",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "What is the largest mammal in the world?",
+          "options": [
+            "Elephant",
+            "Blue Whale",
+            "Great White Shark",
+            "Giraffe"
+          ],
+          "answer": "Blue Whale",
+          "points": 5
+        }
+      ],
+      "facultyId": 106,
+      "isActive": false,
+      "price": 50
+    },
+    {
+      "id": 7,
+      "assessmentNo": "A07",
+      "assessmentName": "Math Basics Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "5:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "What is the largest mammal in the world?",
+          "options": [
+            "Elephant",
+            "Blue Whale",
+            "Great White Shark",
+            "Giraffe"
+          ],
+          "answer": "Blue Whale",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "What is the currency of Japan?",
+          "options": [
+            "Yen",
+            "Won",
+            "Dollar",
+            "Euro"
+          ],
+          "answer": "Yen",
+          "points": 5
+        }
+      ],
+      "facultyId": 107,
+      "isActive": true,
+      "price": 40
+    },
+    {
+      "id": 8,
+      "assessmentNo": "A08",
+      "assessmentName": "History Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "6:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "What is the currency of Japan?",
+          "options": [
+            "Yen",
+            "Won",
+            "Dollar",
+            "Euro"
+          ],
+          "answer": "Yen",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "Who painted the Mona Lisa?",
+          "options": [
+            "Vincent van Gogh",
+            "Pablo Picasso",
+            "Leonardo da Vinci",
+            "Claude Monet"
+          ],
+          "answer": "Leonardo da Vinci",
+          "points": 5
+        }
+      ],
+      "facultyId": 108,
+      "isActive": false,
+      "price": 45
+    },
+    {
+      "id": 9,
+      "assessmentNo": "A09",
+      "assessmentName": "History Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "7:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "Who painted the Mona Lisa?",
+          "options": [
+            "Vincent van Gogh",
+            "Pablo Picasso",
+            "Leonardo da Vinci",
+            "Claude Monet"
+          ],
+          "answer": "Leonardo da Vinci",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "What is the boiling point of water?",
+          "options": [
+            "100°C",
+            "90°C",
+            "80°C",
+            "110°C"
+          ],
+          "answer": "100°C",
+          "points": 5
+        }
+      ],
+      "facultyId": 109,
+      "isActive": true,
+      "price": 60
+    },
+    {
+      "id": 10,
+      "assessmentNo": "A10",
+      "assessmentName": "Literature Assessment",
+      "assessmentDate": "2023-11-04T00:00:00Z",
+      "assessmentTime": "8:00 PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "What is the boiling point of water?",
+          "options": [
+            "100°C",
+            "90°C",
+            "80°C",
+            "110°C"
+          ],
+          "answer": "100°C",
+          "points": 5
+        },
+        {
+          "id": 2,
+          "qText": "Which gas do plants absorb from the atmosphere?",
+          "options": [
+            "Oxygen",
+            "Carbon Dioxide",
+            "Nitrogen",
+            "Helium"
+          ],
+          "answer": "Carbon Dioxide",
+          "points": 5
+        }
+      ],
+      "facultyId": 110,
+      "isActive": true,
+      "price": 70
+    },
+    {
+      "id": 0,
+      "assessmentNo": "A11",
+      "assessmentName": "Some Assessment",
+      "assessmentDate": "2024-11-05T18:30:00.000Z",
+      "assessmentTime": "12:00PM",
+      "questions": [
+        {
+          "id": 1,
+          "qText": "Some question",
+          "options": [
+            "a",
+            "b",
+            "c",
+            "d"
+          ],
+          "answer": "a",
+          "points": "5"
+        }
+      ],
+      "facultyId": "111",
+      "isActive": true,
+      "price": 86
+    }
+  ]
 }

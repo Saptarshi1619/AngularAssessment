@@ -57,9 +57,11 @@ export class UpdateassessmentComponent {
 
   // Step 1: Handle assessment selection and prefill forms for next steps
   onSelectAssessment() {
+    //this.idUpdated = parseInt(idObtained.split(':')[1].trim());
     const selectedId = this.selectAssessmentForm.value.selectedAssessmentId;
-    this.selectedAssessment =
-      this.assessmentService.getAssessmentById(selectedId);
+    this.assessmentService.getAssessmentById(selectedId).subscribe(data=>{
+      this.selectedAssessment = data
+    });
 
     if (this.selectedAssessment) {
       // Prefill Step 2 (Edit Details) form
@@ -120,7 +122,7 @@ export class UpdateassessmentComponent {
   // Save the full assessment after all steps are completed
   saveFullAssessment() {
     if (this.selectedAssessment) {
-      this.assessmentService.updateAssessment(this.selectedAssessment);
+      this.assessmentService.updateAssessment(this.selectedAssessment).subscribe(data=>{});
       console.log('Assessment updated:', this.selectedAssessment);
     }
   }

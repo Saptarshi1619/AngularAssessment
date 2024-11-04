@@ -33,7 +33,7 @@ export class ViewAssessmentComponent{
     this.assessmentService.getAllAssessments().subscribe(data=>{
       this.assessments = data
       this.filteredAssessments = this.assessments
-      console.log(this.filteredAssessments)
+      //console.log(this.filteredAssessments)
     })
   }
 

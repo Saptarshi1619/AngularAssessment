@@ -109,6 +109,7 @@ export class AddassessmentComponent {
     //this.assessment.id = this.assessServ.getAllAssessments().length + 1;
     this.assessServ.getAllAssessments().subscribe(data=>{
       this.assessment.id = data.length + 1
+      console.log("id generated",this.assessment.id)
     })
     this.assessment.assessmentName = assessmentDetails.nameCtrl;
     this.assessment.assessmentNo = assessmentDetails.assessmentNoCtrl;
@@ -117,7 +118,7 @@ export class AddassessmentComponent {
     this.assessment.facultyId = assessmentDetails.facultyIdCtrl;
     this.assessment.price = assessmentDetails.priceCtrl;
 
-    // Convert form data to Question_Anirban objects and add to assessment
+    // Convert form data to Question objects and add to assessment
     this.assessment.questions = questionForms.map((qForm, index) => {
       const qData = qForm.value;
       return new Question(
@@ -131,6 +132,8 @@ export class AddassessmentComponent {
 
     // Print the compiled assessment object
     console.log(this.assessment);
-    this.assessServ.addAssessment(this.assessment);
+    this.assessServ.addAssessment(this.assessment).subscribe(data=>{
+
+    });
   }
 }
