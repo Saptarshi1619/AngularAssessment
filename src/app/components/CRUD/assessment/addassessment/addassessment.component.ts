@@ -27,8 +27,8 @@ export class AddassessmentComponent {
     this.assessmentDetailsForm = this.fb.group({
       nameCtrl: ['', Validators.required],
       assessmentNoCtrl: ['', Validators.required],
-      facultyIdCtrl: [null, Validators.required], // Faculty reference
-      priceCtrl: [0, [Validators.required, Validators.min(0)]], // Minimum price validation
+      facultyIdCtrl: [null, Validators.required],
+      priceCtrl: [0, [Validators.required, Validators.min(0)]],
     });
 
     this.assessmentTimeForm = this.fb.group({
