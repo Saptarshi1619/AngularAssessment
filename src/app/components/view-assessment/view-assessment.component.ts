@@ -10,6 +10,7 @@ import { AssessmentService } from '../../services/assessment.service';
 })
 export class ViewAssessmentComponent{
 
+  filteredAssessments:Assessment[] = []
   name:string = ""
   assessments:Assessment[] = []
   assessment = new Assessment(
@@ -29,14 +30,18 @@ export class ViewAssessmentComponent{
   }
 
   constructor(private cdr:ChangeDetectorRef, private assessmentService:AssessmentService){
-    this.assessments = this.assessmentService.getAllAssessments();
+    this.assessmentService.getAllAssessments().subscribe(data=>{
+      this.assessments = data
+      this.filteredAssessments = this.assessments
+      console.log(this.filteredAssessments)
+    })
   }
 
   currentPage: number = 1; // Current page number
   assessmentsPerPage: number = 9; // Total assessments to display per page
   pagedAssessments:Assessment[] = []
 
-  filteredAssessments:Assessment[] = []
+  
   searchTerm:string = ""
   filterAssessments() {
     this.currentPage = 1; // Reset to first page on every new search

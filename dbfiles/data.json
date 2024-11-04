@@ -1,0 +1,56 @@
+{
+    "assessments": [
+        {
+            "id": 1,
+            "assessmentNo": "A01",
+            "assessmentName": "General Knowledge Assessment",
+            "assessmentDate": "2023-11-04T00:00:00Z",
+            "assessmentTime": "10:00 AM",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "What is the capital of France?",
+                    "options": ["Paris", "Berlin", "Madrid", "Rome"],
+                    "answer": "Paris",
+                    "points": "5"
+                },
+                {
+                    "id": 2,
+                    "qText": "Which planet is known as the Red Planet?",
+                    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+                    "answer": "Mars",
+                    "points": "5"
+                }
+            ],
+            "facultyId": 101,
+            "isActive": true,
+            "price": 40
+        },
+        {
+            "id": 2,
+            "assessmentNo": "A02",
+            "assessmentName": "General Knowledge Assessment",
+            "assessmentDate": "2023-11-04T00:00:00Z",
+            "assessmentTime": "12:00 PM",
+            "questions": [
+                {
+                    "id": 1,
+                    "qText": "Which planet is known as the Red Planet?",
+                    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+                    "answer": "Mars",
+                    "points": "5"
+                },
+                {
+                    "id": 2,
+                    "question": "What is H2O commonly known as?",
+                    "options": ["Water", "Hydrogen", "Oxygen", "Carbon Dioxide"],
+                    "answer": "Water",
+                    "points": "5"
+                }
+            ],
+            "facultyId": 102,
+            "isActive": true,
+            "price": 50
+        }
+    ]
+}

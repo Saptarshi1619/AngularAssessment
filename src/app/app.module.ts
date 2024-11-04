@@ -65,6 +65,7 @@ import { UpdateAssessmentscoreComponent } from './components/CRUD/assessmentscor
 import { ViewreportComponent } from './components/CRUD/report/viewreport/viewreport.component';
 import { AddreportComponent } from './components/CRUD/report/addreport/addreport.component';
 import { UpdatereportComponent } from './components/CRUD/report/updatereport/updatereport.component';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { UpdatereportComponent } from './components/CRUD/report/updatereport/upd
   providers: [
     provideClientHydration(),
     provideAnimations(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

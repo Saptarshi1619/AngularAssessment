@@ -45,7 +45,9 @@ export class UpdateassessmentComponent {
 
   ngOnInit(): void {
     // Load all assessments on init for dropdown selection
-    this.assessments = this.assessmentService.getAllAssessments();
+    this.assessmentService.getAllAssessments().subscribe(data=>{
+      this.assessments = data
+    })
   }
 
   // Helper method to get questions as FormArray

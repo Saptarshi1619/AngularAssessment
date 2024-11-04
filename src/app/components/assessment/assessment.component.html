@@ -2,7 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">Assessment {{ assessmentDetail.assessmentNo }}</h5>
         <p class="card-text">{{ assessmentDetail.assessmentName}}</p>
-        <p class="card-text">Date: {{ assessmentDetail.assessmentDate | date }}</p>
+        <p class="card-text">Date: {{ assessmentDetail.assessmentDate }}</p>
         <p class="card-text">Time: {{ assessmentDetail.assessmentTime }}</p>
         <button class="btn btn-outline-primary" (click)="toggleDetails()" [ngClass]="assessmentDetail.isActive?'':'disabled'">
             {{ showDetails ? 'Hide Details' : 'Show Details' }}
