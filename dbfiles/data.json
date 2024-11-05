@@ -442,24 +442,6 @@
       },
       "mobile": "345-678-9012",
       "role": "Admin"
-    },
-    {
-      "id": "4",
-      "firstName": "sap",
-      "lastName": "dat",
-      "email": "email@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "address": {
-        "houseNo": "1",
-        "street": "asdads",
-        "area": "asdafa",
-        "city": "Kolkata",
-        "state": "West Bengal",
-        "country": "India",
-        "zip": "123"
-      },
-      "mobile": "9876543210"
     }
   ],
   "carts": [
@@ -470,14 +452,97 @@
       "arrAId": [
         "2"
       ],
-      "quantity": 1
+      "quantity": [],
+      "total": 0
     },
     {
       "id": "1",
       "userId": 1,
-      "arrAssessments": [],
-      "arrAId": [],
-      "quantity": 0
+      "arrAssessments": [
+        {
+          "id": "1",
+          "assessmentNo": "A01",
+          "assessmentName": "General Knowledge Assessment",
+          "assessmentDate": "2023-11-04T00:00:00Z",
+          "assessmentTime": "10:00 AM",
+          "questions": [
+            {
+              "id": 1,
+              "qText": "What is the capital of France?",
+              "options": [
+                "Paris",
+                "Berlin",
+                "Madrid",
+                "Rome"
+              ],
+              "answer": "Paris",
+              "points": "5"
+            },
+            {
+              "id": 2,
+              "qText": "Which planet is known as the Red Planet?",
+              "options": [
+                "Earth",
+                "Mars",
+                "Jupiter",
+                "Saturn"
+              ],
+              "answer": "Mars",
+              "points": "5"
+            }
+          ],
+          "facultyId": 101,
+          "isActive": true,
+          "price": 40
+        },
+        {
+          "id": "5",
+          "assessmentNo": "A05",
+          "assessmentName": "Environmental Science Assessment",
+          "assessmentDate": "2023-11-04T00:00:00Z",
+          "assessmentTime": "3:00 PM",
+          "questions": [
+            {
+              "id": 1,
+              "qText": "What is the powerhouse of the cell?",
+              "options": [
+                "Nucleus",
+                "Mitochondria",
+                "Ribosome",
+                "Endoplasmic Reticulum"
+              ],
+              "answer": "Mitochondria",
+              "points": 5
+            },
+            {
+              "id": 2,
+              "qText": "Which element has the chemical symbol O?",
+              "options": [
+                "Oxygen",
+                "Gold",
+                "Silver",
+                "Iron"
+              ],
+              "answer": "Oxygen",
+              "points": 5
+            }
+          ],
+          "facultyId": 105,
+          "isActive": true,
+          "price": 40
+        }
+      ],
+      "arrAId": [
+        "2",
+        "7",
+        "11",
+        "5"
+      ],
+      "quantity": [
+        1,
+        1
+      ],
+      "total": 80
     },
     {
       "id": "2",
@@ -488,7 +553,8 @@
         "6",
         "7"
       ],
-      "quantity": 3
+      "quantity": [],
+      "total": 0
     }
   ]
 }

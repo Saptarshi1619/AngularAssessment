@@ -1,3 +1,45 @@
-<div *ngFor="let p of cart.arrAId; let i=index">
-    {{p}} Quantity: {{cart.quantity}}
+<div class="cart-container" *ngIf="cart">
+    <h1>Your Shopping Cart</h1>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+        <p><strong>Cart ID:</strong> {{ cart.id }}</p>
+        <p><strong>Total Items:</strong> {{ cart.arrAssessments.length }}</p>
+        <p><strong>Total Price:</strong> ${{ cart.total.toFixed(2) }}</p>
+    </div>
+
+    <!-- List of Cart Items (Assessments) -->
+    <div class="cart-items" *ngIf="cart.arrAssessments.length > 0">
+        <ul>
+            <li *ngFor="let assessment of cart.arrAssessments; let i = index">
+                <div class="cart-item">
+                    <h3>{{ assessment.assessmentName }}</h3>
+                    <p>Price: ${{ assessment.price.toFixed(2) }}</p>
+
+                    <!-- Quantity Selector -->
+                    <div class="quantity">
+                        <label for="quantity-{{ i }}">Quantity:</label>
+                        <input type="number" [id]="'quantity-' + i" [(ngModel)]="cart.quantity[i]" min="1" max="99"
+                            (ngModelChange)="updateCartTotal()">
+                    </div>
+
+                    <!-- Item Total Price -->
+                    <p><strong>Total for this item:</strong> ${{ (assessment.price * cart.quantity[i]).toFixed(2) }}</p>
+
+                    <!-- Delete Button -->
+                    <button class="delete-btn" (click)="removeAssessment(i)">Delete</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Empty Cart Message -->
+    <div *ngIf="cart.arrAssessments.length === 0">
+        <p>Your cart is empty. Add some items to get started!</p>
+    </div>
+
+    <!-- Checkout Button -->
+    <div class="checkout">
+        <button [disabled]="cart.arrAssessments.length === 0" (click)="checkout()">Proceed to Checkout</button>
+    </div>
 </div>

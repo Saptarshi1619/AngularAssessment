@@ -25,7 +25,7 @@ export class AssessmentComponent implements OnInit{
   @Output() checkPrice:EventEmitter<number>
 
   userId = localStorage.getItem('userId')
-  cart = new CartSaptarshi(0,0,[],[],0)
+  cart = new CartSaptarshi('', '', [], [], 0)
   constructor(private cartService:CartService){
     this.checkPrice = new EventEmitter<number>
     const userIdNumber = Number(this.userId)
@@ -61,20 +61,45 @@ export class AssessmentComponent implements OnInit{
     this.showDetails = !this.showDetails;
   }
 
-  addToCart(aId: number){
-    if(this.cart.arrAId.includes(aId)){
-      let pos = this.cart.arrAId.indexOf(aId)
-      this.cart.quantity = this.cart.quantity + 1;
-      console.log("In If", aId)
-    }
-    else{
-      this.cart.arrAId.push(aId)
-      this.cart.quantity = this.cart.quantity + 1
-      console.log("in else", aId)
+  addToCart(): void {
+    // Get the current userId from localStorage
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.log('User is not logged in!');
+      return;
     }
 
-    this.cartService.updateCart(this.cart).subscribe(data=>{
-      console.log('Cart for userId' + data.id + 'is Updated')
-    })
+    const userIdNumber = Number(userId);
+
+    // Call CartService to get the user's cart
+    this.cartService.getCartById(userIdNumber).subscribe((cart: CartSaptarshi) => {
+      if (cart) {
+        // Check if the assessment already exists in the cart
+        const existingAssessmentIndex = cart.arrAssessments.findIndex(
+          (item) => item.id === this.assessmentDetail.id
+        );
+
+        if (existingAssessmentIndex >= 0) {
+          // If already exists, update the quantity
+          cart.quantity[existingAssessmentIndex]++;
+        } else {
+          // If not exists, add the new assessment with quantity 1
+          cart.arrAssessments.push(this.assessmentDetail);
+          cart.quantity.push(1);
+        }
+
+        // Recalculate the total price
+        cart.total = cart.arrAssessments.reduce((total, item, index) => {
+          return total + item.price * cart.quantity[index];
+        }, 0);
+
+        // Pass the updated cart object to the CartService to update the cart
+        this.cartService.updateCart(cart).subscribe(() => {
+          console.log('Assessment added to cart successfully!');
+        });
+      }
+    });
   }
+
+
 }
