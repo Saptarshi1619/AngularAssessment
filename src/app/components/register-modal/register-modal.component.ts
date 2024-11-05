@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AddressSaptarshi } from '../../Models/addresssaptarshi';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { mustMatch } from '../../helpers/validators';
+import { UserSaptarshi } from '../../Models/usersaptarshi';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register-modal',
@@ -12,7 +14,7 @@ export class RegisterModalComponent {
   signupForm!: FormGroup;
   isSubmitted = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private userService:UserService) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -39,10 +41,20 @@ export class RegisterModalComponent {
 
   onSubmit(): void {
     this.isSubmitted = true;
-    if (this.signupForm.valid) {
-      console.log('Form Submitted', this.signupForm.value);
-    } else {
-      this.signupForm.markAllAsTouched(); // This will trigger validation messages for all fields
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched()
     }
+
+    const newUser = this.signupForm.value;
+    this.userService.getAllUsers().subscribe((users: any[]) => {
+      // Auto-generate new user ID
+      const newId = (users.length + 1).toString(); 
+
+      const userToAdd = { ...newUser, id: newId };
+
+      //add new user
+      this.userService.addUser(userToAdd).subscribe(data => {
+      });
+    });
   }
 }

@@ -108,7 +108,7 @@ export class AddassessmentComponent {
     // Populate the assessment object
     //this.assessment.id = this.assessServ.getAllAssessments().length + 1;
     this.assessServ.getAllAssessments().subscribe(data=>{
-      this.assessment.id = data.length + 1
+      this.assessment.id = (data.length + 1)
       console.log("id generated",this.assessment.id)
       this.assessment.assessmentName = assessmentDetails.nameCtrl;
     this.assessment.assessmentNo = assessmentDetails.assessmentNoCtrl;

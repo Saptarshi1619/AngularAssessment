@@ -31,6 +31,7 @@
                   Register
               </button>
 
+
 <!-- Modal -->
 <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -45,7 +46,7 @@
         (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input name="userName" [(ngModel)]="userName" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input name="userName" [(ngModel)]="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -76,5 +77,8 @@
 
 
       </div>
+      <button class="btn btn-secondary" *ngIf="isLoggedIn">
+        <a class="nav-link" [routerLink]="'/cart'">Cart</a>
+    </button>
     </div>
   </nav>

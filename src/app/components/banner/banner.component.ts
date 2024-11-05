@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Role } from '../../Models/roles.enum';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-banner',
@@ -8,33 +9,68 @@ import { Role } from '../../Models/roles.enum';
   styleUrl: './banner.component.scss'
 })
 export class BannerComponent{
-  isRegisterMode = false;
-  userName:string;
-  password:string;
+  email: string = '';
+  password: string = '';
   isLoggedIn: boolean = false;
+  errorMessage: string = '';
   isAdmin: boolean = false;
 
-  constructor()
+  constructor(private userService: UserService)
   {
-    this.userName = ""
-    this.password = ""
-  }
-
-  onSubmit(){
     
   }
 
-  toggle(event: MouseEvent) {
-    event.preventDefault();
-    this.isRegisterMode = !this.isRegisterMode; // Toggle the mode
+  onSubmit() {
+    // Clear previous error message
+    this.errorMessage = '';
+    var user: any
+    // Check if the user exists and the credentials match
+    this.userService.getAllUsers().subscribe(data=>{
+       user = data.find(u => u.email === this.email && u.password === this.password);
+       console.log(user)
+       if (user) {
+        // Successful login, set isLoggedIn to true
+        this.isLoggedIn = true;
+  
+        // Store user id and role in localStorage
+        localStorage.setItem('userId', user.id.toString());
+        localStorage.setItem('userRole', user.role);
+  
+      } else {
+        // If user is not found or credentials don't match
+        this.isLoggedIn = false;
+        this.errorMessage = 'Invalid email or password!';
+      }
+    })
+    
   }
 
-  private closeModal() {
-    // Find the close button in the modal and simulate a click
-  }
+  // toggle(event: MouseEvent) {
+  //   event.preventDefault();
+  //   this.isRegisterMode = !this.isRegisterMode; // Toggle the mode
+  // }
 
+  // private closeModal() {
+  //   // Find the close button in the modal and simulate a click
+  // }
+
+
+  ngOnInit() {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.isLoggedIn = true;
+      // You can retrieve role and other info if needed
+      const userRole = localStorage.getItem('userRole');
+      console.log('Logged in user role:', userRole);
+    }
+  }
   
 
   onLogout() {
+    this.isLoggedIn = false;
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+    this.email = '';
+    this.password = '';
   }
 }

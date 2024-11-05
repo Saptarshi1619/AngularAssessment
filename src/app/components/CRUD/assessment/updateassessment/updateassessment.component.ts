@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Assessment } from '../../../../Models/assessment';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AssessmentService } from '../../../../services/assessment.service';
 import { Question } from '../../../../Models/question';
 
@@ -45,9 +45,9 @@ export class UpdateassessmentComponent {
 
   ngOnInit(): void {
     // Load all assessments on init for dropdown selection
-    this.assessmentService.getAllAssessments().subscribe(data=>{
-      this.assessments = data
-    })
+    this.assessmentService.getAllAssessments().subscribe((data) => {
+      this.assessments = data;
+    });
   }
 
   // Helper method to get questions as FormArray
@@ -57,29 +57,34 @@ export class UpdateassessmentComponent {
 
   // Step 1: Handle assessment selection and prefill forms for next steps
   onSelectAssessment() {
-    //this.idUpdated = parseInt(idObtained.split(':')[1].trim());
     const selectedId = this.selectAssessmentForm.value.selectedAssessmentId;
-    this.assessmentService.getAssessmentById(selectedId).subscribe(data=>{
-      this.selectedAssessment = data
-    });
 
-    if (this.selectedAssessment) {
-      // Prefill Step 2 (Edit Details) form
-      this.editDetailsForm.patchValue({
-        name: this.selectedAssessment.assessmentName,
-        assessmentNo: this.selectedAssessment.assessmentNo,
-        facultyId: this.selectedAssessment.facultyId,
-        price: this.selectedAssessment.price,
-        date: this.selectedAssessment.assessmentDate,
-        time: this.selectedAssessment.assessmentTime,
-      });
+    //check the id
+    console.log('selectedAssessmentId: ', selectedId);
 
-      // Prefill Step 3 (Edit Questions) form with existing questions
-      this.questions.clear();
-      this.selectedAssessment.questions.forEach((question) => {
-        this.questions.push(this.createQuestionFormGroup(question));
+    this.assessmentService
+      .getAssessmentById(selectedId)
+      .subscribe((assessment) => {
+        this.selectedAssessment = assessment;
+        console.log(this.selectedAssessment);
+        if (this.selectedAssessment) {
+          // Prefill form
+          this.editDetailsForm.patchValue({
+            name: this.selectedAssessment.assessmentName,
+            assessmentNo: this.selectedAssessment.assessmentNo,
+            facultyId: this.selectedAssessment.facultyId,
+            price: this.selectedAssessment.price,
+            date: this.selectedAssessment.assessmentDate,
+            time: this.selectedAssessment.assessmentTime,
+          });
+
+          // Prefill form with existing questions
+          this.questions.clear();
+          this.selectedAssessment.questions.forEach((question) => {
+            this.questions.push(this.createQuestionFormGroup(question));
+          });
+        }
       });
-    }
   }
 
   // Creates a FormGroup for each question, prefilled with data if provided
@@ -95,14 +100,14 @@ export class UpdateassessmentComponent {
     });
   }
 
-  // Step 2: Save edited assessment details
+  //  Save edited assessment details
   saveAssessmentDetails() {
     if (this.selectedAssessment) {
       Object.assign(this.selectedAssessment, this.editDetailsForm.value);
     }
   }
 
-  // Step 3: Save edited questions
+  //  Save edited questions
   saveQuestions() {
     if (this.selectedAssessment) {
       const updatedQuestions = this.questions.controls.map((control, index) => {
@@ -122,8 +127,17 @@ export class UpdateassessmentComponent {
   // Save the full assessment after all steps are completed
   saveFullAssessment() {
     if (this.selectedAssessment) {
-      this.assessmentService.updateAssessment(this.selectedAssessment).subscribe(data=>{});
-      console.log('Assessment updated:', this.selectedAssessment);
+      this.assessmentService
+        .updateAssessment(this.selectedAssessment)
+        .subscribe(
+          (updatedAssessment) => {
+            console.log('Assessment updated:', updatedAssessment);
+          },
+          (error) => {
+            console.error('Error updating assessment:', error);
+          }
+        );
     }
   }
+
 }
