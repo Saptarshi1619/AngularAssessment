@@ -7,6 +7,9 @@
         <button class="btn btn-outline-primary" (click)="toggleDetails()" [ngClass]="assessmentDetail.isActive?'':'disabled'">
             {{ showDetails ? 'Hide Details' : 'Show Details' }}
         </button>
+        <button class="btn btn-outline-primary" (click)="addToCart(assessmentDetail.id)">
+            Add to Cart
+        </button>
 
         <!-- Show details when the button is clicked -->
         <div *ngIf="showDetails" class="assessment-details">

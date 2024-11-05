@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { Assessment } from '../../Models/assessment';
 import { Question } from '../../Models/question'
 import { match } from 'node:assert';
+import { CartService } from '../../services/cart.service';
+import { CartSaptarshi } from '../../Models/cartsaptarshi';
 
 @Component({
   selector: 'app-assessment',
@@ -21,8 +23,15 @@ export class AssessmentComponent implements OnInit{
     0
   );
   @Output() checkPrice:EventEmitter<number>
-  constructor(){
+
+  userId = localStorage.getItem('userId')
+  cart = new CartSaptarshi(0,0,[],[],0)
+  constructor(private cartService:CartService){
     this.checkPrice = new EventEmitter<number>
+    const userIdNumber = Number(this.userId)
+    this.cartService.getCartById(userIdNumber).subscribe(data=>{
+      this.cart = data
+    })
   }
 
   ngOnInit(): void {
@@ -50,5 +59,22 @@ export class AssessmentComponent implements OnInit{
 
   toggleDetails() {
     this.showDetails = !this.showDetails;
+  }
+
+  addToCart(aId: number){
+    if(this.cart.arrAId.includes(aId)){
+      let pos = this.cart.arrAId.indexOf(aId)
+      this.cart.quantity = this.cart.quantity + 1;
+      console.log("In If", aId)
+    }
+    else{
+      this.cart.arrAId.push(aId)
+      this.cart.quantity = this.cart.quantity + 1
+      console.log("in else", aId)
+    }
+
+    this.cartService.updateCart(this.cart).subscribe(data=>{
+      console.log('Cart for userId' + data.id + 'is Updated')
+    })
   }
 }

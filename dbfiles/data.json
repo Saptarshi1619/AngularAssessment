@@ -462,28 +462,33 @@
       "mobile": "9876543210"
     }
   ],
-
-  "carts":[
+  "carts": [
     {
-      "id": 0,
+      "id": "0",
       "userId": 0,
       "arrAssessments": [],
-      "quantity": 0,
-      "total": 0
+      "arrAId": [
+        "2"
+      ],
+      "quantity": 1
     },
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "arrAssessments": [],
-      "quantity": 0,
-      "total": 0
+      "arrAId": [],
+      "quantity": 0
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 2,
       "arrAssessments": [],
-      "quantity": 0,
-      "total": 0
+      "arrAId": [
+        "2",
+        "6",
+        "7"
+      ],
+      "quantity": 3
     }
   ]
 }
