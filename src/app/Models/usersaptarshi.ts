@@ -1,4 +1,5 @@
 import { AddressSaptarshi } from "./addresssaptarshi";
+import { Assessment } from "./assessment";
 import { Role } from "./roles.enum";
 
 export class UserSaptarshi {
@@ -10,8 +11,9 @@ export class UserSaptarshi {
     address: AddressSaptarshi;
     mobile: string
     role: Role; // Enum for User roles (Admin, Faculty, Trainee)
+    assessments: Assessment[]
 
-    constructor(id:number, firstname:string, lastname:string, email:string, password:string, address:AddressSaptarshi,mobile:string, role:Role)
+    constructor(id:number, firstname:string, lastname:string, email:string, password:string, address:AddressSaptarshi,mobile:string, role:Role, assessments:Assessment[])
     {
         this.id = id;
         this.firstName = firstname;
@@ -21,5 +23,6 @@ export class UserSaptarshi {
         this.address = address
         this.mobile = mobile
         this.role = role
+        this.assessments = assessments
     }
   }

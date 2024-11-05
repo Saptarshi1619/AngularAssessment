@@ -3,7 +3,7 @@
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Course</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="course-category-tab" data-bs-toggle="tab" data-bs-target="#course-category-tab-pane" type="button" role="tab" aria-controls="course-category-tab-pane" aria-selected="false">Course Category</button>
+    <button class="nav-link" id="coursecategory-tab" data-bs-toggle="tab" data-bs-target="#coursecategory-tab-pane" type="button" role="tab" aria-controls="coursecategory-tab-pane" aria-selected="false">Course Category</button>
   </li>
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="faculty-tab" data-bs-toggle="tab" data-bs-target="#faculty-tab-pane" type="button" role="tab" aria-controls="faculty-tab-pane" aria-selected="false">Faculty</button>
@@ -53,26 +53,26 @@
   <!-- End of Course tab-->
 
   <!-- Nested Tab 1 Course Category Tab-->
-  <div class="tab-pane fade show active" id="course-category-tab-pane" role="tabpanel" aria-labelledby="course-category-tab" tabindex="0">
+  <div class="tab-pane fade show active" id="coursecategory-tab-pane" role="tabpanel" aria-labelledby="coursecategory-tab" tabindex="0">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="course-category-add-tab" data-bs-toggle="tab" data-bs-target="#course-category-add-tab-pane" type="button" role="tab" aria-controls="course-category-tab-pane" aria-selected="true">Add</button>
+        <button class="nav-link active" id="coursecategory-add-tab" data-bs-toggle="tab" data-bs-target="#coursecategory-add-tab-pane" type="button" role="tab" aria-controls="coursecategory-tab-pane" aria-selected="true">Add</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="course-category-view-tab" data-bs-toggle="tab" data-bs-target="#course-category-view-tab-pane" type="button" role="tab" aria-controls="course-category-view-tab-pane" aria-selected="false">View</button>
+        <button class="nav-link" id="coursecategory-view-tab" data-bs-toggle="tab" data-bs-target="#coursecategory-view-tab-pane" type="button" role="tab" aria-controls="coursecategory-view-tab-pane" aria-selected="false">View</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="course-category-update-tab" data-bs-toggle="tab" data-bs-target="#course-category-update-tab-pane" type="button" role="tab" aria-controls="course-category-update-tab-pane" aria-selected="false">Update</button>
+        <button class="nav-link" id="coursecategory-update-tab" data-bs-toggle="tab" data-bs-target="#coursecategory-update-tab-pane" type="button" role="tab" aria-controls="coursecategory-update-tab-pane" aria-selected="false">Update</button>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="course-category-add-tab-pane" role="tabpanel" aria-labelledby="course-category-tab" tabindex="0">
+      <div class="tab-pane fade show active" id="coursecategory-add-tab-pane" role="tabpanel" aria-labelledby="coursecategory-tab" tabindex="0">
         <app-addcategory></app-addcategory>
       </div>
-      <div class="tab-pane fade" id="course-category-view-tab-pane" role="tabpanel" aria-labelledby="course-category-tab" tabindex="0">
+      <div class="tab-pane fade" id="coursecategory-view-tab-pane" role="tabpanel" aria-labelledby="coursecategory-tab" tabindex="0">
         <app-viewcategory></app-viewcategory>
       </div>
-      <div class="tab-pane fade" id="course-category-update-tab-pane" role="tabpanel" aria-labelledby="course-category-tab" tabindex="0">
+      <div class="tab-pane fade" id="coursecategory-update-tab-pane" role="tabpanel" aria-labelledby="coursecategory-tab" tabindex="0">
         <app-updatecategory></app-updatecategory>
       </div>
     </div>

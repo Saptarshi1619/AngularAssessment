@@ -28,10 +28,10 @@ export class AssessmentComponent implements OnInit{
   cart = new CartSaptarshi('', '', [], [], 0)
   constructor(private cartService:CartService){
     this.checkPrice = new EventEmitter<number>
-    const userIdNumber = Number(this.userId)
-    this.cartService.getCartById(userIdNumber).subscribe(data=>{
-      this.cart = data
-    })
+    // const userIdNumber = Number(this.userId)
+    // this.cartService.getCartById(userIdNumber).subscribe(data=>{
+    //   this.cart = data
+    // })
   }
 
   ngOnInit(): void {

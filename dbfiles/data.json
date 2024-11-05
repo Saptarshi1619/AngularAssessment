@@ -405,7 +405,8 @@
         "country": "Country"
       },
       "mobile": "123-456-7890",
-      "role": "Faculty"
+      "role": "Faculty",
+      "assessments": []
     },
     {
       "id": "1",
@@ -423,42 +424,8 @@
         "country": "Country"
       },
       "mobile": "234-567-8901",
-      "role": "Trainee"
-    },
-    {
-      "id": "2",
-      "firstName": "Charlie",
-      "lastName": "Brown",
-      "email": "charlie.brown@example.com",
-      "password": "password123",
-      "address": {
-        "houseNo": "789",
-        "street": "Pine Dr",
-        "area": "Villagetown",
-        "city": "Villagetown",
-        "state": "State",
-        "zip": "54321",
-        "country": "Country"
-      },
-      "mobile": "345-678-9012",
-      "role": "Admin"
-    }
-  ],
-  "carts": [
-    {
-      "id": "0",
-      "userId": 0,
-      "arrAssessments": [],
-      "arrAId": [
-        "2"
-      ],
-      "quantity": [],
-      "total": 0
-    },
-    {
-      "id": "1",
-      "userId": 1,
-      "arrAssessments": [
+      "role": "Trainee",
+      "assessments": [
         {
           "id": "1",
           "assessmentNo": "A01",
@@ -531,18 +498,51 @@
           "isActive": true,
           "price": 40
         }
+      ]
+    },
+    {
+      "id": "2",
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "email": "charlie.brown@example.com",
+      "password": "password123",
+      "address": {
+        "houseNo": "789",
+        "street": "Pine Dr",
+        "area": "Villagetown",
+        "city": "Villagetown",
+        "state": "State",
+        "zip": "54321",
+        "country": "Country"
+      },
+      "mobile": "345-678-9012",
+      "role": "Admin",
+      "assessments": []
+    }
+  ],
+  "carts": [
+    {
+      "id": "0",
+      "userId": 0,
+      "arrAssessments": [],
+      "arrAId": [
+        "2"
       ],
+      "quantity": [],
+      "total": 0
+    },
+    {
+      "id": "1",
+      "userId": 1,
+      "arrAssessments": [],
       "arrAId": [
         "2",
         "7",
         "11",
         "5"
       ],
-      "quantity": [
-        1,
-        1
-      ],
-      "total": 80
+      "quantity": [],
+      "total": 0
     },
     {
       "id": "2",

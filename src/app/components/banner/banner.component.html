@@ -17,6 +17,9 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'/admin'">Admin</a>  <!--*ngIf="isAdmin"-->
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/dashboard'" *ngIf="isLoggedIn">DashBoard</a>
+          </li>
         </ul>
         <!-- Modals -->
          <!-- Button trigger modal -->

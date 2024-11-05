@@ -7,13 +7,15 @@ import { ViewAssessmentComponent } from './components/view-assessment/view-asses
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminGuard } from './guards/adminguard';
 import { CartComponent } from './components/cart/cart.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'about', component:AboutComponent},
   {path:'viewassessment', component:ViewAssessmentComponent},
   {path:'admin', component:AdminComponent,canActivate:[AdminGuard()]},
-  {path:'cart', component:CartComponent}
+  {path:'cart', component:CartComponent},
+  {path:'dashboard', component:DashboardComponent}
 ];
 
 @NgModule({
