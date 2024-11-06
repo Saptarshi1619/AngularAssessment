@@ -5,6 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { AssessmentService } from '../../services/assessment.service';
 import { AttendanceSaptarshi } from '../../Models/attendancesaptarshi';
 import { AttendanceService } from '../../services/attendance.service';
+import { ScoreserviceService } from '../../services/scoreservice.service';
 
 @Component({
   selector: 'app-takeassessment',
@@ -35,52 +36,18 @@ export class TakeassessmentComponent {
   // Store the total marks obtained
   totalMarks: number | null = null;
 
-  constructor(private activatedRoute: ActivatedRoute, private assessmentService: AssessmentService, private attendanceService: AttendanceService) {
-
-
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private assessmentService: AssessmentService,
+    private attendanceService: AttendanceService,
+    private scoreService: ScoreserviceService // Inject the ScoreService
+  ) {
     this.activatedRoute.params.subscribe((params: Params) => {
       console.log(params['id']);
       let aId = parseInt(params['id']);
       this.assessmentService.getAssessmentById(aId).subscribe(data => {
         this.assessment = data;
       });
-    });
-
-    const traineeId = localStorage.getItem('userId');
-    const traineeIdNumber = Number(traineeId)
-
-    this.attendanceService.getAllAttendance().subscribe({
-      next: (attendanceRecords) => {
-        const newId = attendanceRecords.length + 1;
-  
-        const attendanceRecord: AttendanceSaptarshi = {
-          id: newId, // Assign the new ID
-          traineeId: traineeIdNumber, // Get traineeId from localStorage
-          assessmentId: this.assessment.id, // Use the current assessment ID
-          attended: true,
-          date: new Date(),
-        };
-  
-        // Call the AttendanceService to add the attendance record
-        this.attendanceService.addAttendance(attendanceRecord).subscribe({
-          next: (response) => {
-            console.log('Attendance record added:', response);
-            //alert('Your assessment has been submitted, and attendance has been recorded.');
-          },
-          error: (error) => {
-            console.error('Error adding attendance:', error);
-            //alert('Failed to record attendance. Please try again.');
-          }
-        });
-  
-        // Stop the timer after submission
-        clearInterval(this.timer);
-        //alert('Your assessment has been submitted!');
-      },
-      error: (error) => {
-        console.error('Error fetching attendance records:', error);
-        //alert('Failed to fetch attendance records. Please try again.');
-      }
     });
   }
 
@@ -132,10 +99,21 @@ export class TakeassessmentComponent {
   // Submit the assessment and stop the timer
   submitAssessment(): void {
     this.calculateTotalMarks(); // Calculate total marks before submitting
-    alert('Your assessment has been submitted.');
     clearInterval(this.timer); // Stop the timer when the user submits
-  }
 
+    // Store the score using ScoreService
+    const scoreData = {
+      traineeId: Number(localStorage.getItem('userId')),
+      assessmentId: this.assessment.id,
+      score: this.totalMarks,
+      date: new Date()
+    };
+
+    this.scoreService.addScore(scoreData).subscribe(response => {
+      console.log('Score added:', response);
+      alert('Your assessment has been submitted.');
+    });
+  }
 }
 
 

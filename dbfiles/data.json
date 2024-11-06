@@ -594,11 +594,69 @@
       "date": "2023-11-05T00:00:00.000Z"
     },
     {
-      "id": 6,
+      "id": "6",
       "traineeId": 1,
       "assessmentId": "5",
       "attended": true,
       "date": "2024-11-06T10:51:17.388Z"
+    },
+    {
+      "id": "7",
+      "traineeId": 1,
+      "assessmentId": "1",
+      "attended": true,
+      "date": "2024-11-06T14:51:30.716Z"
+    },
+    {
+      "id": "8",
+      "traineeId": 1,
+      "assessmentId": "1",
+      "attended": true,
+      "date": "2024-11-06T14:52:29.259Z"
+    },
+    {
+      "id": "9",
+      "traineeId": 1,
+      "assessmentId": "1",
+      "attended": true,
+      "date": "2024-11-06T15:01:13.331Z"
+    },
+    {
+      "id": "10",
+      "traineeId": 1,
+      "assessmentId": "1",
+      "attended": true,
+      "date": "2024-11-06T15:02:08.424Z"
+    },
+    {
+      "id": "11",
+      "traineeId": 1,
+      "assessmentId": "1",
+      "attended": true,
+      "date": "2024-11-06T15:04:33.122Z"
+    }
+  ],
+  "scores": [
+    {
+      "id": "1",
+      "traineeId": 101,
+      "assessmentId": 1,
+      "score": 95,
+      "date": "2024-11-02T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "traineeId": 102,
+      "assessmentId": 2,
+      "score": 88,
+      "date": "2024-11-02T11:00:00Z"
+    },
+    {
+      "id": "a64c",
+      "traineeId": 1,
+      "assessmentId": "1",
+      "score": 10,
+      "date": "2024-11-06T15:22:23.502Z"
     }
   ]
 }

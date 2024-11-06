@@ -1,14 +1,14 @@
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-4" *ngFor="let score of arrScores">
-            <div class="score-card mb-4">
-                <div class="score-card-body">
-                    <h5 class="score-card-title">Trainee ID: {{score.traineeId}}</h5>
-                    <h6 class="score-card-subtitle">Assessment ID: {{score.assessmentId}}</h6>
-                    <p class="score-card-id">Score: {{score.score}}</p>
-                    <p class="score-card-date">Date: {{score.date | date}}</p>
-                </div>
-            </div>
+      <div class="col-md-4" *ngFor="let score of arrScores">
+        <div class="score-card mb-4">
+          <div class="score-card-body">
+            <h5 class="score-card-title">Trainee ID: {{score.traineeId}}</h5>
+            <h6 class="score-card-subtitle">Assessment ID: {{score.assessmentId}}</h6>
+            <p class="score-card-id">Score: {{score.score}}</p>
+            <p class="score-card-date">Date: {{score.date | date}}</p>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
