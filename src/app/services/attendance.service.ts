@@ -9,11 +9,11 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 export class AttendanceService {
 
   private attendanceRecords: AttendanceSaptarshi[] = [
-    // new AttendanceSaptarshi(1, 6, 101, true, new Date('2023-11-01')),
-    // new AttendanceSaptarshi(2, 77, 102, false, new Date('2023-11-02')),
-    // new AttendanceSaptarshi(3, 8, 101, true, new Date('2023-11-03')),
-    // new AttendanceSaptarshi(4, 9, 103, true, new Date('2023-11-04')),
-    // new AttendanceSaptarshi(5, 10, 102, false, new Date('2023-11-05')),
+    // "id": "1",
+    //   "traineeId": 6,
+    //   "assessmentId": 101,
+    //   "attended": true,
+    //   "date": "2023-11-01T00:00:00.000Z"
   ];
   
   baseURL: string;
