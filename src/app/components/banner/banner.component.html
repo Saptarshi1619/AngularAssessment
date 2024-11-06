@@ -15,7 +15,7 @@
             <a class="nav-link" [routerLink]="'/viewassessment'">Assessment</a> <!--*ngIf="isLoggedIn"-->
         </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/admin'">Admin</a>  <!--*ngIf="isAdmin"-->
+            <a class="nav-link" [routerLink]="'/admin'" *ngIf="isLoggedIn">Admin</a>  <!--*ngIf="isAdmin"-->
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'/dashboard'" *ngIf="isLoggedIn">DashBoard</a>

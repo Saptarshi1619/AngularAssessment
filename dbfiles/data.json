@@ -556,5 +556,43 @@
       "quantity": [],
       "total": 0
     }
+  ],
+
+  "attendance": [
+    {
+      "id": 1,
+      "traineeId": 6,
+      "assessmentId": 101,
+      "attended": true,
+      "date": "2023-11-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "traineeId": 77,
+      "assessmentId": 102,
+      "attended": false,
+      "date": "2023-11-02T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "traineeId": 8,
+      "assessmentId": 101,
+      "attended": true,
+      "date": "2023-11-03T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "traineeId": 9,
+      "assessmentId": 103,
+      "attended": true,
+      "date": "2023-11-04T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "traineeId": 10,
+      "assessmentId": 102,
+      "attended": false,
+      "date": "2023-11-05T00:00:00.000Z"
+    }
   ]
 }

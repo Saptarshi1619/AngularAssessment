@@ -12,6 +12,8 @@ export class ViewattendanceComponent {
   attendance: AttendanceSaptarshi = new AttendanceSaptarshi(0, 0, 0, false, new Date());
 
   constructor(private attendanceService: AttendanceService) {
-    this.arrAttendance = this.attendanceService.getAllAttendance();
+    this.attendanceService.getAllAttendance().subscribe(data=>{
+      this.arrAttendance = data
+    });
   }
 }

@@ -24,7 +24,9 @@ export class UpdateattendanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.arrAttendance = this.attendanceService.getAllAttendance();
+    this.attendanceService.getAllAttendance().subscribe(data=>{
+      this.arrAttendance = data
+    });
   }
 
   onSubmit(): void {
@@ -44,7 +46,10 @@ export class UpdateattendanceComponent implements OnInit {
   onChangeType(evt: any): void {
     const idObtained = evt.target.value;
     this.idUpdated = parseInt(idObtained.split(':')[0].trim());
-    const attendanceRecord = this.attendanceService.getAttendanceById(this.idUpdated);
+    const attendanceRecord: any = ''
+    this.attendanceService.getAttendanceById(this.idUpdated).subscribe(data=>{
+      const attendanceRecord = data
+    });
     
     if (attendanceRecord) {
       this.attendanceForm.patchValue({

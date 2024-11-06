@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>{{ assessment.assessmentName }}</h2>
+      </div>
+    </div>
+    
+    <div *ngFor="let question of assessment.questions; let i = index">
+      <div class="question">
+        <h3>{{ i + 1 }}. {{ question.qText }}</h3>
+        <div class="options">
+          <div *ngFor="let option of question.options; let j = index">
+            <button 
+              class="option-btn" 
+              [ngClass]="{'selected': selectedAnswers[i] === option, 'correct': isAnswerCorrect(i, option)}"
+              (click)="selectAnswer(i, option)">
+              {{ option }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="total-marks">
+      <button (click)="calculateTotalMarks()">Submit</button>
+      <p *ngIf="totalMarks !== null">Total Marks: {{ totalMarks }}</p>
+    </div>
+  </div>
+  

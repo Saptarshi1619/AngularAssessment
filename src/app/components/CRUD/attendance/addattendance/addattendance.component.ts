@@ -15,7 +15,9 @@ export class AddattendanceComponent {
   attendance = new AttendanceSaptarshi(0, 0, 0, false, new Date());
 
   constructor(private formbuilder: FormBuilder, private attendanceService: AttendanceService) {
-    this.arrAttendance = this.attendanceService.getAllAttendance();
+    this.attendanceService.getAllAttendance().subscribe(data=>{
+      this.arrAttendance = data
+    });
     this.attendanceForm = this.formbuilder.group({
       id: [0],
       traineeId: [0],
@@ -56,7 +58,9 @@ export class AddattendanceComponent {
 
     if (id && traineeId && assessmentId && date && this.attendanceForm.valid) {
       this.attendance = new AttendanceSaptarshi(tempId, traineeId, assessmentId, attended, new Date(date));
-      this.attendanceService.addAttendance(this.attendance);
+      this.attendanceService.addAttendance(this.attendance).subscribe(data=>{
+        
+      });
     } else {
       this.attendanceForm.markAllAsTouched(); // This will trigger validation messages for all fields
     }

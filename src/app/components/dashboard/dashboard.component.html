@@ -1,27 +1,22 @@
 <div class="dashboard-container">
-    <h1>Welcome to your Dashboard</h1>
-  
-    <!-- Display the Assessments -->
-    <div *ngIf="assessments.length > 0; else noAssessments">
-      <h2>Your Added Assessments</h2>
-      <ul>
-        <li *ngFor="let assessment of assessments; let i = index">
-          <div class="assessment-item">
-            <h3>{{ assessment.assessmentName }}</h3>
-            <p><strong>Price:</strong> ${{ assessment.price.toFixed(2) }}</p>
-            <p><strong>Description:</strong> {{ assessment.description }}</p>
-  
-            <!-- Take Assessment Button -->
-            <button class="btn btn-primary">
-              Take Assessment
-            </button>
-          </div>
-        </li>
-      </ul>
+  <h1>Welcome to your Dashboard</h1>
+
+  <!-- Display the Assessments -->
+  <div *ngIf="assessments.length > 0; else noAssessments">
+    <h2>Your Added Assessments</h2>
+    <div class="assessment-cards">
+      <div *ngFor="let assessment of assessments; let i = index" class="assessment-card">
+        <h3 class="assessment-title">{{ assessment.assessmentNo }}</h3>
+        <p><strong>Name:</strong> {{ assessment.assessmentName }}</p>
+
+        <!-- Take Assessment Button -->
+        <button class="btn btn-primary" (click)="getAssessmentDetails(assessment.id)">Take Assessment</button>
+      </div>
     </div>
-  
-    <!-- No Assessments Message -->
-    <ng-template #noAssessments>
-      <p>You haven't added any assessments yet. Complete your checkout to add assessments!</p>
-    </ng-template>
   </div>
+
+  <!-- No Assessments Message -->
+  <ng-template #noAssessments>
+    <p>You haven't added any assessments yet. Complete your checkout to add assessments!</p>
+  </ng-template>
+</div>

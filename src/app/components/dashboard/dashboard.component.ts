@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { AddressSaptarshi } from '../../Models/addresssaptarshi';
 import { Router } from '@angular/router';
 import { Role } from '../../Models/roles.enum';
+import { Assessment } from '../../Models/assessment';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ import { Role } from '../../Models/roles.enum';
 export class DashboardComponent implements OnInit {
   userId = localStorage.getItem('userId'); // Get userId from localStorage
   user: UserSaptarshi; // Variable to hold the user data
-  assessments: any[] = []; // Array to hold the user's assessments
+  assessments: Assessment[] = []; // Array to hold the user's assessments
 
   constructor(
     private userService: UserService, // Inject UserService to fetch user data
@@ -47,8 +48,6 @@ export class DashboardComponent implements OnInit {
     // If the userId is not available or invalid, redirect to login or handle accordingly
     if (isNaN(userIdNumber)) {
       console.error('Invalid userId or userId not found in localStorage.');
-      // Redirect to login page if necessary
-      this.router.navigate(['/login']);
       return;
     }
 
@@ -64,10 +63,14 @@ export class DashboardComponent implements OnInit {
         console.log('Assessments:', this.assessments);
       },
       (error) => {
-        // Handle any errors when fetching the user data
         console.error('Error fetching user data:', error);
-        // Optionally, navigate to an error page or display a message
       }
     );
+}
+
+
+getAssessmentDetails(aId:number){
+  console.log(aId)
+  this.router.navigate(['takeassessment/' + aId])
 }
 }

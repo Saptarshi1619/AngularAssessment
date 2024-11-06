@@ -68,6 +68,7 @@ import { UpdatereportComponent } from './components/CRUD/report/updatereport/upd
 import { provideHttpClient } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TakeassessmentComponent } from './components/takeassessment/takeassessment.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     UpdatereportComponent,
     CartComponent,
     DashboardComponent,
+    TakeassessmentComponent,
   ],
   imports: [
     BrowserModule,
