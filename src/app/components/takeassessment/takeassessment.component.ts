@@ -51,7 +51,6 @@ export class TakeassessmentComponent {
 
     this.attendanceService.getAllAttendance().subscribe({
       next: (attendanceRecords) => {
-        // Generate a new ID for the attendance record based on the current length of the attendance array
         const newId = attendanceRecords.length + 1;
   
         const attendanceRecord: AttendanceSaptarshi = {
@@ -59,7 +58,7 @@ export class TakeassessmentComponent {
           traineeId: traineeIdNumber, // Get traineeId from localStorage
           assessmentId: this.assessment.id, // Use the current assessment ID
           attended: true,
-          date: new Date()
+          date: new Date(),
         };
   
         // Call the AttendanceService to add the attendance record

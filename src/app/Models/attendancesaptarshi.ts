@@ -3,7 +3,7 @@ export class AttendanceSaptarshi {
     traineeId: number; 
     assessmentId: number; 
     attended: boolean; 
-    date: Date; 
+    date: Date;
 
     constructor(id:number, traineeId:number, assessmentId:number, attended:boolean, date:Date){
         this.id = id

@@ -569,7 +569,7 @@
       "id": "2",
       "traineeId": 77,
       "assessmentId": 102,
-      "attended": false,
+      "attended": true,
       "date": "2023-11-02T00:00:00.000Z"
     },
     {
@@ -590,8 +590,15 @@
       "id": "5",
       "traineeId": 10,
       "assessmentId": 102,
-      "attended": false,
+      "attended": true,
       "date": "2023-11-05T00:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "traineeId": 1,
+      "assessmentId": "5",
+      "attended": true,
+      "date": "2024-11-06T10:51:17.388Z"
     }
   ]
 }
