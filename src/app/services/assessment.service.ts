@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Assessment } from '../Models/assessment';
 import { Question } from '../Models/question';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -549,12 +549,31 @@ export class AssessmentService {
   // }
 
   getAllAssessments(): Observable<Assessment[]>{
-    return this.httpClient.get<Assessment[]>(this.baseURL + '/assessments')
-    .pipe(
+    const role = localStorage.getItem('userRole'); // Get the user's role from local storage
+  const uid = Number(localStorage.getItem('userId'));   // Get the user's uid from local storage
+
+  return this.httpClient.get<Assessment[]>(this.baseURL + '/assessments').pipe(
+      map((assessments: Assessment[]) => {
+          // If the role is 'faculty', filter the assessments by facultyId
+          if (role === 'Faculty' && uid) {
+              return assessments.filter(assessment => assessment.facultyId === uid);
+          }
+          // Otherwise, return all assessments
+          return assessments;
+      }),
       retry(1),
       catchError(this.httpError)
-    );
+  );
+
   }
+
+  // getAllAssessments(): Observable<Assessment[]>{
+  //   return this.httpClient.get<Assessment[]>(this.baseURL + '/assessments')
+  //   .pipe(
+  //     retry(1),
+  //     catchError(this.httpError)
+  //   );
+  // }
 
   getAssessmentById(id:number):Observable<Assessment>{
     return this.httpClient.get<Assessment>(this.baseURL + '/assessments/' + id)

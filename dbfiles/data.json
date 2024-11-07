@@ -32,7 +32,7 @@
           "points": "5"
         }
       ],
-      "facultyId": 101,
+      "facultyId": 0,
       "isActive": true,
       "price": 40
     },
@@ -68,7 +68,7 @@
           "points": "5"
         }
       ],
-      "facultyId": 102,
+      "facultyId": 0,
       "isActive": true,
       "price": 50
     },
@@ -104,7 +104,7 @@
           "points": 5
         }
       ],
-      "facultyId": 103,
+      "facultyId": 0,
       "isActive": false,
       "price": 50
     },
@@ -140,7 +140,7 @@
           "points": 5
         }
       ],
-      "facultyId": 104,
+      "facultyId": 3,
       "isActive": false,
       "price": 60
     },
@@ -176,7 +176,7 @@
           "points": 5
         }
       ],
-      "facultyId": 105,
+      "facultyId": 3,
       "isActive": true,
       "price": 40
     },
@@ -212,7 +212,7 @@
           "points": 5
         }
       ],
-      "facultyId": 106,
+      "facultyId": 3,
       "isActive": false,
       "price": 50
     },
@@ -248,7 +248,7 @@
           "points": 5
         }
       ],
-      "facultyId": 107,
+      "facultyId": 3,
       "isActive": true,
       "price": 40
     },
@@ -284,7 +284,7 @@
           "points": 5
         }
       ],
-      "facultyId": 108,
+      "facultyId": 11,
       "isActive": false,
       "price": 45
     },
@@ -320,7 +320,7 @@
           "points": 5
         }
       ],
-      "facultyId": 109,
+      "facultyId": 11,
       "isActive": true,
       "price": 60
     },
@@ -356,7 +356,7 @@
           "points": 5
         }
       ],
-      "facultyId": "120",
+      "facultyId": 11,
       "isActive": true,
       "price": 70,
       "name": "Literature Assessment",
@@ -383,7 +383,7 @@
           "points": "5"
         }
       ],
-      "facultyId": "111",
+      "facultyId": "11",
       "isActive": true,
       "price": 0
     }
@@ -405,7 +405,7 @@
         "country": "Country"
       },
       "mobile": "123-456-7890",
-      "role": "Faculty",
+      "role": "Admin",
       "assessments": []
     },
     {
@@ -518,7 +518,46 @@
       "mobile": "345-678-9012",
       "role": "Admin",
       "assessments": []
+    },
+    {
+      "id": "3",
+      "firstName": "David",
+      "lastName": "Williams",
+      "email": "david.williams@example.com",
+      "password": "password123",
+      "address": {
+        "houseNo": "321",
+        "street": "Elm St",
+        "area": "Capitol City",
+        "city": "Capitol City",
+        "state": "State",
+        "zip": "11223",
+        "country": "Country"
+      },
+      "mobile": "456-789-0123",
+      "role": "Faculty",
+      "assessments": []
+    },
+    {
+      "id":"11",
+      "firstName": "Mia",
+      "lastName": "Harris",
+      "email": "mia.harris@example.com",
+      "password": "password123",
+      "address": {
+        "houseNo": "246",
+        "street": "Chestnut Ct",
+        "area": "Springfield",
+        "city": "Springfield",
+        "state": "State",
+        "zip": "54321",
+        "country": "Country"
+      },
+      "mobile": "234-567-8901",
+      "role": "Faculty",
+      "assessments": []
     }
+    
   ],
   "carts": [
     {

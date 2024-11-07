@@ -40,7 +40,7 @@ export class TakeassessmentComponent {
     private activatedRoute: ActivatedRoute,
     private assessmentService: AssessmentService,
     private attendanceService: AttendanceService,
-    private scoreService: ScoreserviceService // Inject the ScoreService
+    private scoreService: ScoreserviceService
   ) {
     this.activatedRoute.params.subscribe((params: Params) => {
       console.log(params['id']);

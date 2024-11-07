@@ -13,7 +13,7 @@ export class BannerComponent{
   password: string = '';
   isLoggedIn: boolean = false;
   errorMessage: string = '';
-  isAdmin: boolean = false;
+  userRole: string | null = '';
 
   constructor(private userService: UserService)
   {
@@ -57,12 +57,17 @@ export class BannerComponent{
 
   ngOnInit() {
     const userId = localStorage.getItem('userId');
+    this.userRole = localStorage.getItem('userRole');
     if (userId) {
       this.isLoggedIn = true;
       // You can retrieve role and other info if needed
       const userRole = localStorage.getItem('userRole');
       console.log('Logged in user role:', userRole);
     }
+  }
+
+  isTrainee(): boolean {
+    return this.userRole === 'Trainee';
   }
   
 

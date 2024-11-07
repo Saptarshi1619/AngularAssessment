@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ScoreserviceService {
 
-  private apiUrl = 'http://localhost:3000/scores'; // Update with your actual API URL
+  private apiUrl = 'http://localhost:3000/scores';
 
   constructor(private http: HttpClient) { }
 

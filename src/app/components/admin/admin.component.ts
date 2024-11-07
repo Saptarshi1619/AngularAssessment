@@ -6,16 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
-  Role = ''
-  isAdminOrfaculty = false
-  tabDisabled = false
-  constructor(){
-    if(localStorage.getItem('userRole')!=null){
-      this.Role = localStorage.getItem('userRole')||'user'
-      if(this.Role == 'Trainee'){
-        this.tabDisabled = true
-        //console.log(this.Role)
-      }
-    }
+  userRole: string | null = '';
+
+  ngOnInit(): void {
+    this.userRole = localStorage.getItem('userRole');
   }
+
+  isAdmin(): boolean {
+    return this.userRole === 'Admin';
+  }
+
+  isFaculty(){
+    return this.userRole === 'Faculty';
+  }
+
 }
