@@ -12,7 +12,9 @@ export class ViewcourseComponent {
   course:CourseSaptarshi = new CourseSaptarshi(0,'','');
 
   constructor(private CourseService:CourseService){
-    this.arrCourse = this.CourseService.getAllCourses()
+    this.CourseService.getAllCourses().subscribe(data=>{
+      this.arrCourse = data
+    })
     console.log(this.arrCourse)
   }
 }

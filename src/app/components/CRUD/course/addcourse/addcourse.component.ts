@@ -10,49 +10,61 @@ import { CourseService } from '../../../../services/course.service';
 })
 export class AddcourseComponent implements OnInit{
   courseForm: FormGroup;
-  submitted = true;
-  arrCourse: CourseSaptarshi[] = []
-  course = new CourseSaptarshi(0,'','')
+  submitted = false;
+  arrCourses: CourseSaptarshi[] = [];
+  course = new CourseSaptarshi(0, '', '');
 
-  constructor(private formbuilder:FormBuilder, private courseservice:CourseService){
-    this.arrCourse = this.courseservice.getAllCourses();
-    this.courseForm = this.formbuilder.group({
-      cId:[0],
-      cname:[''],
+  constructor(private formBuilder: FormBuilder, private courseService: CourseService) {
+    this.courseService.getAllCourses().subscribe(data => {
+      this.arrCourses = data;
+    });
+
+    this.courseForm = this.formBuilder.group({
+      id: [0],
+      name: [''],
+      description: ['']
     });
   }
+
   ngOnInit(): void {
-    this.courseForm = this.formbuilder.group({
-      cId: ['', Validators.required],
-      cname: ['', [Validators.required, Validators.minLength(3)]]
+    this.courseForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
     var tempId = 0;
     var maxId = 0;
-    this.arrCourse.forEach((p)=>{
-      if(maxId < p.id){
-        maxId = p.id
+
+    this.arrCourses.forEach((course) => {
+      if (maxId < course.id) {
+        maxId = course.id;
       }
     });
 
-    tempId = maxId;
-    tempId = tempId + 1;
-    console.log(tempId)
+    tempId = maxId + 1;
 
-    let cId = this.courseForm.value.cId;
-    let cname = this.courseForm.value.cname;
-    let description = this.courseForm.value.description;
+    console.log('Generated Temp ID:', tempId);
 
-    console.log(cId, cname, description);
-    if(cId && cname && description && this.courseForm.valid)
-    {
-      this.course = new CourseSaptarshi(tempId, cname, description)
-      this.courseservice.addCourse(this.course)
-    }else {
-      this.courseForm.markAllAsTouched(); // This will trigger validation messages for all fields
+    const name = this.courseForm.value.name;
+    const description = this.courseForm.value.description;
+
+    if (name && description && this.courseForm.valid) {
+      this.course = new CourseSaptarshi(tempId, name, description);
+      this.courseService.addCourse(this.course).subscribe(
+        data => {
+          console.log('Course added:', data);
+          this.arrCourses.push(data); // Optionally add the new course to the array for immediate UI update
+        },
+        error => {
+          console.error('Error adding course:', error);
+        }
+      );
+    } else {
+      this.courseForm.markAllAsTouched(); // Trigger validation messages for all fields
     }
   }
 }

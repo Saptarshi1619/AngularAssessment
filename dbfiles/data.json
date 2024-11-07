@@ -722,5 +722,57 @@
       "id": "51",
       "description": "Data Science"
     }
+  ],
+  "courses":[
+    {
+      "id": 1,
+      "name": "Introduction to Programming",
+      "description": "This course covers the basics of programming, focusing on fundamental concepts and problem-solving techniques."
+    },
+    {
+      "id": 2,
+      "name": "Web Development",
+      "description": "Learn to build responsive websites using HTML, CSS, and JavaScript, along with frameworks like Bootstrap."
+    },
+    {
+      "id": 3,
+      "name": "Database Management Systems",
+      "description": "An introduction to database design, SQL, and the management of data in relational databases."
+    },
+    {
+      "id": 4,
+      "name": "Software Engineering",
+      "description": "This course explores software development methodologies, project management, and software lifecycle."
+    },
+    {
+      "id": 5,
+      "name": "Data Structures and Algorithms",
+      "description": "Learn the fundamental data structures and algorithms, focusing on their applications and performance analysis."
+    },
+    {
+      "id": 6,
+      "name": "Machine Learning",
+      "description": "An introduction to machine learning concepts, algorithms, and applications using Python."
+    },
+    {
+      "id": 7,
+      "name": "Cyber Security Basics",
+      "description": "Understand the fundamentals of cybersecurity, including threats, vulnerabilities, and protection measures."
+    },
+    {
+      "id": 8,
+      "name": "Mobile App Development",
+      "description": "Learn how to create mobile applications for iOS and Android platforms using modern development tools."
+    },
+    {
+      "id": 9,
+      "name": "Cloud Computing",
+      "description": "Explore cloud computing concepts, models, and services, including AWS and Azure."
+    },
+    {
+      "id": 10,
+      "name": "DevOps Practices",
+      "description": "This course covers DevOps principles and practices, including continuous integration and delivery."
+    }
   ]
 }
