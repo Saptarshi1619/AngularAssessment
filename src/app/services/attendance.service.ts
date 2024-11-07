@@ -17,8 +17,6 @@ export class AttendanceService {
   ];
   
   baseURL: string;
-   ProductArr: AttendanceSaptarshi[] = []
-   products: AttendanceSaptarshi[]=[]
    httpHeader={
     headers: new HttpHeaders({
       'Content-Type' : 'application/json'

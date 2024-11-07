@@ -12,6 +12,8 @@ export class ViewcategoryComponent {
   category:CategorySaptarshi = new CategorySaptarshi(0,'');
 
   constructor(private categoryService:CourseCategoryService){
-    this.arrCategory = this.categoryService.getAllCategories()
+    this.categoryService.getAllCategory().subscribe(data=>{
+      this.arrCategory = data
+    })
   }
 }

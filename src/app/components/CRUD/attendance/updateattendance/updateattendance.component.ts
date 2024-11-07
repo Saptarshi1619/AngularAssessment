@@ -38,7 +38,9 @@ export class UpdateattendanceComponent implements OnInit {
         this.attendanceForm.value.attended,
         this.attendanceForm.value.date,
       );
-      this.attendanceService.updateAttendance(updatedAttendance);
+      this.attendanceService.updateAttendance(updatedAttendance).subscribe(data=>{
+        
+      });
       // Optionally reset the form or show a success message
     }
   }

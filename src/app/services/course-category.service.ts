@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CategorySaptarshi } from '../Models/categorysaptarshi';
+import { catchError, Observable, retry, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,59 +9,83 @@ import { CategorySaptarshi } from '../Models/categorysaptarshi';
 export class CourseCategoryService {
 
   private categories: CategorySaptarshi[] = [
-    {
-      id: 1,
-      description: 'Programming Languages',
-    },
-    {
-      id: 2,
-      description: 'Web Development',
-    },
-    {
-      id: 3,
-      description: 'Database Management',
-    },
-    {
-      id: 4,
-      description: 'Software Engineering',
-    },
-    {
-      id: 5,
-      description: 'Data Science',
-    },
+    // {
+    //   id: 1,
+    //   description: 'Programming Languages',
+    // },
+    // {
+    //   id: 2,
+    //   description: 'Web Development',
+    // },
+    // {
+    //   id: 3,
+    //   description: 'Database Management',
+    // },
+    // {
+    //   id: 4,
+    //   description: 'Software Engineering',
+    // },
+    // {
+    //   id: 5,
+    //   description: 'Data Science',
+    // },
   ];
 
-  constructor() { }
+  baseURL: string;
+   httpHeader={
+    headers: new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
+   }
+   constructor(private httpClient: HttpClient){  //dependency injection
+    this.baseURL = 'http://localhost:3000'
+   }
 
-  getAllCategories(): CategorySaptarshi[] {
-    return this.categories;
-  }
+  // getAllCategorySaptarshis(): CategorySaptarshi[]{
+  //   return this.categories
+  // }
 
-  getCategoryById(id: number): CategorySaptarshi {
-    let defaultCategory = new CategorySaptarshi(0, '');
-    for (var i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].id === id) {
-        console.log(this.categories[i]);
-        return this.categories[i];
-      }
-    }
-    return defaultCategory;
-  }
-
-  addCategory(category: CategorySaptarshi): void {
-    this.categories.push(category);
-  }
-
-  updateCategory(updatedCategory: CategorySaptarshi): void {
-    const index = this.categories.findIndex(
-      (category) => category.id === updatedCategory.id
+  getAllCategory(): Observable<CategorySaptarshi[]>{
+    return this.httpClient.get<CategorySaptarshi[]>(this.baseURL + '/categories')
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
     );
-    if (index !== -1) {
-      this.categories[index] = updatedCategory;
-    }
   }
 
-  deleteCategory(id: number): void {
-    this.categories = this.categories.filter((category) => category.id !== id);
+  getCategoryById(id:number):Observable<CategorySaptarshi>{
+    return this.httpClient.get<CategorySaptarshi>(this.baseURL + '/categories/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    );
+  }
+
+  addCategory(categories: CategorySaptarshi): Observable<CategorySaptarshi>{
+    return this.httpClient.post<CategorySaptarshi>(this.baseURL + '/categories',JSON.stringify(categories),this.httpHeader)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    )
+  }
+
+  updateCategory(p: CategorySaptarshi): Observable<CategorySaptarshi> {
+    return this.httpClient.put<CategorySaptarshi>(this.baseURL + '/categories/' + p.id, JSON.stringify(p),this.httpHeader)
+    .pipe(
+      retry(1),
+      catchError(this.httpError)
+    );
+  }
+
+  httpError(error:HttpErrorResponse){
+    let msg='';
+    if(error.error instanceof ErrorEvent){
+      msg=error.error.message;
+    }
+    else{
+      msg=`Error Code:${error.status}\nMessage:${error.message}`;
+    }
+    console.log(msg);
+    return throwError(msg);
   }
 }

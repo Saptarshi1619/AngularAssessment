@@ -1,0 +1,30 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <!-- User Name and Role -->
+        <mat-panel-title>
+            {{ user.firstName }} {{ user.lastName }}
+        </mat-panel-title>
+        <mat-panel-description>
+            <span class="text-muted">{{ user.role }}</span>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <!-- User Details -->
+    <div class="user-details">
+        <!-- Address Section -->
+        <p><strong>Address:</strong></p>
+        <ul>
+            <li><strong>Street:</strong> {{ user.address.street }}</li>
+            <li><strong>City:</strong> {{ user.address.city }}</li>
+            <li><strong>State:</strong> {{ user.address.state }}</li>
+            <li><strong>ZIP:</strong> {{ user.address.zip }}</li>
+        </ul>
+
+
+        <!-- User ID -->
+        <p class="card-text mt-3">
+            <small class="text-muted">User ID: {{ user.id }}</small>
+        </p>
+    </div>
+</mat-expansion-panel>

@@ -539,7 +539,7 @@
       "assessments": []
     },
     {
-      "id":"11",
+      "id": "11",
       "firstName": "Mia",
       "lastName": "Harris",
       "email": "mia.harris@example.com",
@@ -557,7 +557,6 @@
       "role": "Faculty",
       "assessments": []
     }
-    
   ],
   "carts": [
     {
@@ -696,6 +695,32 @@
       "assessmentId": "1",
       "score": 10,
       "date": "2024-11-06T15:22:23.502Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "description": "Programming Languages"
+    },
+    {
+      "id": "2",
+      "description": "Web Development"
+    },
+    {
+      "id": "3",
+      "description": "Database Management"
+    },
+    {
+      "id": "4",
+      "description": "Software Engineering"
+    },
+    {
+      "id": "5",
+      "description": "Data Science"
+    },
+    {
+      "id": "51",
+      "description": "Data Science"
     }
   ]
 }

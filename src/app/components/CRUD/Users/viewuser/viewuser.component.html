@@ -1,0 +1,16 @@
+<div class="user-viewer">
+    <!-- Role Filter -->
+    <div class="mb-3">
+        <label for="roleFilter">Filter by Role:</label>
+        <select id="roleFilter" [(ngModel)]="selectedRole" (change)="filterUsers()">
+            <option value="">All</option>
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+    </div>
+
+    <!-- User List -->
+    <div *ngFor="let user of filteredUsers">
+        <app-userblock [user]="user"></app-userblock>
+    </div>
+</div>
+

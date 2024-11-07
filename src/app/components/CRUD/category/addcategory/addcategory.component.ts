@@ -15,7 +15,10 @@ export class AddcategoryComponent implements OnInit{
   category = new CategorySaptarshi(0,'')
 
   constructor(private formbuilder:FormBuilder, private categoryservice:CourseCategoryService){
-    this.arrCategory = this.categoryservice.getAllCategories();
+    //this.arrCategory = this.categoryservice.getAllCategories();
+    this.categoryservice.getAllCategory().subscribe(data=>{
+      this.arrCategory = data
+    })
     this.categoryForm = this.formbuilder.group({
       Id:[0],
       description:['']
@@ -32,26 +35,31 @@ export class AddcategoryComponent implements OnInit{
     this.submitted = true;
     var tempId = 0;
     var maxId = 0;
-    this.arrCategory.forEach((p)=>{
-      if(maxId < p.id){
-        maxId = p.id
+    
+    this.arrCategory.forEach((p) => {
+      if (maxId < p.id) {
+        maxId = p.id;
       }
     });
 
-    tempId = maxId;
-    tempId = tempId + 1;
-    console.log(tempId)
+    tempId = maxId + 1;
 
-    let Id = this.categoryForm.value.Id;
-    let description = this.categoryForm.value.name;
+    console.log('Generated Temp ID:', tempId);
 
-    if(Id && description && this.categoryForm.valid)
-    {
-      this.category = new CategorySaptarshi(tempId, description)
-      this.categoryservice.addCategory(this.category)
-    }
-    else {
-      this.categoryForm.markAllAsTouched(); // This will trigger validation messages for all fields
+    const description = this.categoryForm.value.description;  // Correct field name
+
+    if (description && this.categoryForm.valid) {
+      this.category = new CategorySaptarshi(tempId, description);
+      this.categoryservice.addCategory(this.category).subscribe(
+        data => {
+          console.log('Category added:', data);
+        },
+        error => {
+          console.error('Error adding category:', error);
+        }
+      );
+    } else {
+      this.categoryForm.markAllAsTouched(); // Trigger validation messages for all fields
     }
   }
 }

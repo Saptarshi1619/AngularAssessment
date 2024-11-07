@@ -1,0 +1,23 @@
+<div class="user-update">
+    <!-- User Selection -->
+    <div class="mb-3">
+        <label for="userSelect">Select User:</label>
+        <select id="userSelect" [(ngModel)]="selectedUserId" (change)="onUserSelect()">
+            <option *ngFor="let user of users" [value]="user.id">
+                {{ user.firstName }} {{ user.lastName }}
+            </option>
+        </select>
+    </div>
+
+    <!-- Role Selection -->
+    <div class="mb-3" *ngIf="selectedUser">
+        <label for="roleSelect">Update Role:</label>
+        <select id="roleSelect" [(ngModel)]="selectedUser.role">
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+    </div>
+
+    <!-- Save Button -->
+    <button class="btn btn-primary" (click)="updateUserRole()" [disabled]="!selectedUser">Save</button>
+</div>
+

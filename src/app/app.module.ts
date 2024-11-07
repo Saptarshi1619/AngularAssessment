@@ -69,6 +69,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TakeassessmentComponent } from './components/takeassessment/takeassessment.component';
+import { ViewuserComponent } from './components/CRUD/Users/viewuser/viewuser.component';
+import { UpdateuserComponent } from './components/CRUD/Users/updateuser/updateuser.component';
+import { UserblockComponent } from './components/userblock/userblock.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +112,9 @@ import { TakeassessmentComponent } from './components/takeassessment/takeassessm
     CartComponent,
     DashboardComponent,
     TakeassessmentComponent,
+    ViewuserComponent,
+    UpdateuserComponent,
+    UserblockComponent,
   ],
   imports: [
     BrowserModule,

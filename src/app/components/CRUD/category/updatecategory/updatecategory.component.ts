@@ -10,46 +10,69 @@ import { CourseCategoryService } from '../../../../services/course-category.serv
 })
 export class UpdatecategoryComponent {
   categoryForm: FormGroup;
-  submitted!: true;
-  arrCategory: CategorySaptarshi[] = []
-  category:CategorySaptarshi = new CategorySaptarshi(0,'')
-  idUpdated:number = 0;
+  submitted = false;
+  arrCategory: CategorySaptarshi[] = [];
+  category: CategorySaptarshi = new CategorySaptarshi(0, '');
+  idUpdated: number = 0;
 
-  constructor(private formBuilder:FormBuilder, private categoryService:CourseCategoryService){
-    this.arrCategory = this.categoryService.getAllCategories()
+  constructor(
+    private formBuilder: FormBuilder,
+    private categoryService: CourseCategoryService
+  ) {
+    // Fetch all categories initially
+    this.categoryService.getAllCategory().subscribe(data => {
+      this.arrCategory = data;
+    });
+    
+    // Initialize the form group
     this.categoryForm = this.formBuilder.group({
-      id:[0],
-      description:['']
-    })
+      id: [0],
+      description: ['']
+    });
   }
 
   ngOnInit(): void {
+    // Initialize the form with validations
     this.categoryForm = this.formBuilder.group({
       id: ['', Validators.required],
       description: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 
-  onSubmit(){
+  onSubmit(): void {
     this.submitted = true;
-    let id = this.categoryForm.value.id;
-    let description = this.categoryForm.value.name;
 
-    if(id && description && this.categoryForm.valid){
-      this.category = new CategorySaptarshi(this.idUpdated, description)
-      this.categoryService.updateCategory(this.category);
-    }else{
-      this.categoryForm.markAllAsTouched();
+    const id = this.categoryForm.value.id;
+    const description = this.categoryForm.value.description; // Corrected to 'description'
+
+    if (id && description && this.categoryForm.valid) {
+      this.category = new CategorySaptarshi(id, description);
+
+      // Call the service to update the category
+      this.categoryService.updateCategory(this.category).subscribe(
+        data => {
+          console.log('Category updated:', data);
+          // Optionally, handle the UI after successful update (e.g., show a success message, reset form)
+        },
+        error => {
+          console.error('Error updating category:', error);
+        }
+      );
+    } else {
+      this.categoryForm.markAllAsTouched(); // Trigger validation messages
     }
   }
 
-  onChangeType(evt:any){
-    console.log(evt.target.value);
-    var idObtained = evt.target.value;
-    this.idUpdated = parseInt(idObtained.split(':')[0].trim());
-    console.log(this.idUpdated);
-    this.category = this.categoryService.getCategoryById(this.idUpdated);
-    this.categoryForm.get('id')?.setValue(this.category.id)
-    this.categoryForm.get('description')?.setValue(this.category.description)
+  onChangeType(evt: any): void {
+    const idObtained = evt.target.value;
+    this.idUpdated = parseInt(idObtained.split(':')[0].trim(), 10); // Parse the ID
+
+    // Fetch the selected category by its ID
+    this.categoryService.getCategoryById(this.idUpdated).subscribe(data => {
+      this.category = data;
+      // Populate the form with the category details
+      this.categoryForm.get('id')?.setValue(this.category.id);
+      this.categoryForm.get('description')?.setValue(this.category.description);
+    });
   }
 }

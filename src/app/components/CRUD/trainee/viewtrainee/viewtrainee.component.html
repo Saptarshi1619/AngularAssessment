@@ -3,8 +3,8 @@
         <div class="col-md-4" *ngFor="let c of arrtrainee">
             <div class="faculty-card mb-4">
                 <div class="faculty-card-body">
-                    <h5 class="faculty-card-title">{{c.name}}</h5>
-                    <h6 class="faculty-card-subtitle">User ID: {{c.userId}}</h6>
+                    <h5 class="faculty-card-title">{{c.firstName}}{{c.lastName}}</h5>
+                    <h6 class="faculty-card-subtitle">User ID: {{c.id}}</h6>
                     <p class="faculty-card-id">Trainee ID: {{c.id}}</p>
                 </div>
             </div>
