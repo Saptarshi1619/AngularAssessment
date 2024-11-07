@@ -1,44 +1,34 @@
 <div class="container mt-4">
     <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <h3 class="mb-4 text-center">Update Course</h3>
-        <div class="form-row">
-          <div class="col-sm-6">
-            <label for="id">Course ID</label>
-            <input id="id" type="text" class="form-control" formControlName="id" placeholder="Enter Course ID" (change)="onChangeType($event)">
-            <div *ngIf="courseForm.controls['id'].hasError('required') && courseForm.controls['id'].touched">
-              <small class="text-danger">Course ID is required.</small>
+        <div class="form-group">
+            <h3 class="mb-4 text-center">Update Course</h3>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label class="form-label" for="id">Select a Course to Update</label>
+                    <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
+                        <option selected disabled>Select a Course</option>
+                        <option *ngFor="let p of arrCourses" [ngValue]="p.id">{{p.name}}</option>
+                    </select>
+                    <div *ngIf="courseForm.controls['id'].hasError('required') && courseForm.controls['id'].touched">
+                        <small class="text-danger">Course selection is required.</small>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="form-row mt-3">
+                <div class="col-sm-6">
+                    <label for="description">Description</label>
+                    <input id="description" type="text" class="form-control"
+                        formControlName="description" placeholder="Enter Course Description">
+                    <div *ngIf="courseForm.controls['description'].hasError('required') && courseForm.controls['description'].touched">
+                        <small class="text-danger">Description is required.</small>
+                    </div>
+                    <div *ngIf="courseForm.controls['description'].hasError('minlength') && courseForm.controls['description'].touched">
+                        <small class="text-danger">Description must be at least 10 characters long.</small>
+                    </div>
+                </div>
+            </div>
         </div>
-  
-        <div class="form-row mt-3">
-          <div class="col-sm-6">
-            <label for="name">Course Name</label>
-            <input id="name" type="text" class="form-control" formControlName="name" placeholder="Enter Course Name">
-            <div *ngIf="courseForm.controls['name'].hasError('required') && courseForm.controls['name'].touched">
-              <small class="text-danger">Course Name is required.</small>
-            </div>
-            <div *ngIf="courseForm.controls['name'].hasError('minlength') && courseForm.controls['name'].touched">
-              <small class="text-danger">Course Name must be at least 3 characters long.</small>
-            </div>
-          </div>
-        </div>
-  
-        <div class="form-row mt-3">
-          <div class="col-sm-6">
-            <label for="description">Course Description</label>
-            <input id="description" type="text" class="form-control" formControlName="description" placeholder="Enter Course Description">
-            <div *ngIf="courseForm.controls['description'].hasError('required') && courseForm.controls['description'].touched">
-              <small class="text-danger">Course Description is required.</small>
-            </div>
-            <div *ngIf="courseForm.controls['description'].hasError('minlength') && courseForm.controls['description'].touched">
-              <small class="text-danger">Course Description must be at least 10 characters long.</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-primary mt-4" type="submit" [disabled]="courseForm.invalid">Update Course</button>
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="courseForm.invalid">Update</button>
     </form>
-  </div>
-  
+</div>
