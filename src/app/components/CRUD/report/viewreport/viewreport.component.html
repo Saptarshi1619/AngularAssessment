@@ -1,15 +1,21 @@
 <div class="container mt-4">
-    <h3 class="mb-4 text-center">Trainee Assessment Reports</h3>
-    <div class="row">
-        <div class="col-12">
-            <div *ngFor="let report of arrReports" class="report-card mb-4">
-                <div class="report-card-body">
-                    <h5 class="report-card-title">Trainee ID: {{report.traineeId}}</h5>
-                    <p class="report-card-subtitle">Assessment ID: {{report.assessmentId}}</p>
-                    <p class="report-card-score">Score: {{report.score}}</p>
-                    <p class="report-card-date">Date: {{report.date | date}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <h2>All Trainees' Assessment Reports</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Trainee ID</th>
+          <th>Assessment Name</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of reports">
+          <td>{{ report.traineeId }}</td>
+          <td>{{ report.assessmentName }}</td>
+          <td>{{ report.score }}</td>
+          <td>{{ report.date | date: 'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

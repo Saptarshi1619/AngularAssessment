@@ -1,21 +1,79 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, forkJoin, map, mergeMap, Observable, of, retry, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScoreserviceService {
 
-  private apiUrl = 'http://localhost:3000/scores';
+  private scoresUrl = 'http://localhost:3000/scores';
+  private assessmentsUrl = 'http://localhost:3000/assessments';
+  private httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
+  getAllScores(): Observable<any[]> {
+    return this.http.get<any[]>(this.scoresUrl)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
   getScores(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.scoresUrl);
+  }
+
+  getAssessmentById(assessmentId: number): Observable<any> {
+    return this.http.get<any>(`${this.assessmentsUrl}/${assessmentId}`)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
 
   addScore(scoreData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, scoreData);
+    return this.http.post<any>(this.scoresUrl, scoreData, this.httpHeader)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+  getReports(): Observable<any[]> {
+    return this.getAllScores().pipe(
+      mergeMap(scores => {
+        if (scores.length === 0) {
+          return of([]); // Return an empty array if there are no scores
+        }
+        const assessmentRequests = scores.map(score =>
+          this.getAssessmentById(score.assessmentId).pipe(
+            map(assessment => ({
+              ...score,
+              assessmentName: assessment.assessmentName
+            }))
+          )
+        );
+        return forkJoin(assessmentRequests);
+      })
+    );
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 }
