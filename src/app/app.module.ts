@@ -72,6 +72,7 @@ import { TakeassessmentComponent } from './components/takeassessment/takeassessm
 import { ViewuserComponent } from './components/CRUD/Users/viewuser/viewuser.component';
 import { UpdateuserComponent } from './components/CRUD/Users/updateuser/updateuser.component';
 import { UserblockComponent } from './components/userblock/userblock.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { UserblockComponent } from './components/userblock/userblock.component';
     ViewuserComponent,
     UpdateuserComponent,
     UserblockComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,

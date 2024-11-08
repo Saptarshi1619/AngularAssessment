@@ -7,7 +7,7 @@
         <button class="btn btn-outline-primary" (click)="toggleDetails()" [ngClass]="assessmentDetail.isActive?'':'disabled'">
             {{ showDetails ? 'Hide Details' : 'Show Details' }}
         </button>
-        <button class="btn btn-outline-primary" (click)="addToCart()">
+        <button class="btn btn-outline-primary" (click)="addToCart()" *ngIf="isTrainee()">
             Add to Cart
         </button>
 
@@ -21,7 +21,6 @@
 
                     <ng-container>
                         <strong>Options:</strong> {{ question.options.join(', ') }}<br />
-                        <strong>Answer:</strong> {{ question.answer }}<br />
                     </ng-container>
 
                 </li>

@@ -128,9 +128,6 @@
   <!--Nested tab 5 Assessment Tab-->
   <div class="tab-pane fade" id="assessmentscore-tab-pane" role="tabpanel" aria-labelledby="assessmentscore-tab" tabindex="0">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation" *ngIf="isAdmin()">
-        <button class="nav-link active" id="assessmentscore-add-tab" data-bs-toggle="tab" data-bs-target="#assessmentscore-add-tab-pane" type="button" role="tab" aria-controls="assessmentscore-tab-pane" aria-selected="true">Add</button>
-      </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link " id="assessmentscore-view-tab" data-bs-toggle="tab" data-bs-target="#assessmentscore-view-tab-pane" type="button" role="tab" aria-controls="assessmentscore-view-tab-pane" aria-selected="false">View</button>
       </li>
@@ -139,9 +136,6 @@
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade" id="assessmentscore-add-tab-pane" role="tabpanel" aria-labelledby="assessmentscore-add-tab" tabindex="0">
-        <app-add-assessmentscore></app-add-assessmentscore>
-      </div>
       <div class="tab-pane fade" id="assessmentscore-view-tab-pane" role="tabpanel" aria-labelledby="assessmentscore-view-tab" tabindex="0">
         <app-view-assessmentscore></app-view-assessmentscore>
       </div>
@@ -155,9 +149,6 @@
   <!--Nested tab Attendance Tab-->
   <div class="tab-pane fade" id="attendance-tab-pane" role="tabpanel" aria-labelledby="attendance-tab" tabindex="0">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation" *ngIf="isAdmin()">
-        <button class="nav-link" id="attendance-add-tab" data-bs-toggle="tab" data-bs-target="#attendance-add-tab-pane" type="button" role="tab" aria-controls="attendance-tab-pane" aria-selected="true">Add</button>
-      </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link " id="attendance-view-tab" data-bs-toggle="tab" data-bs-target="#attendance-view-tab-pane" type="button" role="tab" aria-controls="attendance-view-tab-pane" aria-selected="false">View</button>
       </li>
@@ -166,9 +157,6 @@
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade" id="attendance-add-tab-pane" role="tabpanel" aria-labelledby="attendance-add-tab" tabindex="0">
-        <app-addattendance></app-addattendance>
-      </div>
       <div class="tab-pane fade" id="attendance-view-tab-pane" role="tabpanel" aria-labelledby="attendance-view-tab" tabindex="0">
         <app-viewattendance></app-viewattendance>
       </div>

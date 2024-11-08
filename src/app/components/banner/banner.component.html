@@ -18,7 +18,10 @@
             <a class="nav-link" [routerLink]="'/admin'" *ngIf="isLoggedIn">Admin</a>  <!--*ngIf="isAdmin"-->
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/dashboard'" *ngIf="isLoggedIn">DashBoard</a>
+            <a class="nav-link" [routerLink]="'/dashboard'" *ngIf="isLoggedIn && isTrainee()">DashBoard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/contactus'">Contact Us</a>
           </li>
         </ul>
         <!-- Modals -->

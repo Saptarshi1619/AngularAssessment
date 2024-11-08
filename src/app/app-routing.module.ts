@@ -8,6 +8,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TakeassessmentComponent } from './components/takeassessment/takeassessment.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'viewassessment', component:ViewAssessmentComponent},
   {path:'admin', component:AdminComponent},
   {path:'cart', component:CartComponent},
+  {path:'contactus', component:ContactusComponent},
   {path:'takeassessment/:id', component:TakeassessmentComponent},
   {path:'dashboard', component:DashboardComponent}
 ];

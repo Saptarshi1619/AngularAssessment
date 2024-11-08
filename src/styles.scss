@@ -69,3 +69,57 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// src/styles.scss
+
+// Define theme colors
+$primary-blue: #a6c8ff;
+$secondary-blue: #81b3ff;
+$highlight-blue: #4d90d6;
+$text-dark: #333;
+$text-light: #fff;
+
+// Global styles
+body {
+  font-family: Arial, sans-serif;
+  background-color: $primary-blue;
+  color: $text-dark;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: $highlight-blue;
+}
+
+button {
+  background-color: $highlight-blue;
+  color: $text-light;
+}
+
+/* Global theme colors using CSS variables */
+:root {
+  /* Light Blue Colors */
+  --primary-blue: #a6c8ff;    /* Light blue background */
+  --secondary-blue: #81b3ff;  /* Secondary blue (darker than primary) */
+  --highlight-blue: #4d90d6;  /* Highlighted blue (for buttons, links) */
+  --text-dark: #333;          /* Dark text color for readability */
+  --text-light: #fff;         /* Light text color */
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-blue);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: var(--highlight-blue);
+}
+
+button {
+  background-color: var(--highlight-blue);
+  color: var(--text-light);
+}

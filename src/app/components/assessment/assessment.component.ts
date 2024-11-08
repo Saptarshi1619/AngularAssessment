@@ -11,6 +11,7 @@ import { CartSaptarshi } from '../../Models/cartsaptarshi';
   styleUrl: './assessment.component.scss'
 })
 export class AssessmentComponent implements OnInit{
+  userRole: string | null = '';
   @Input() assessmentDetail:Assessment = new Assessment(
     0,
     '',
@@ -36,6 +37,7 @@ export class AssessmentComponent implements OnInit{
 
   ngOnInit(): void {
     this.emitPrice()
+    this.userRole = localStorage.getItem('userRole');
   }
 
   emitPrice(){
@@ -101,5 +103,8 @@ export class AssessmentComponent implements OnInit{
     });
   }
 
+  isTrainee(): boolean {
+    return this.userRole === 'Trainee';
+  }
 
 }

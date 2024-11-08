@@ -41,19 +41,31 @@ export class RegisterModalComponent {
 
   onSubmit(): void {
     this.isSubmitted = true;
+    
+    // Check if the form is invalid
     if (this.signupForm.invalid) {
-      this.signupForm.markAllAsTouched()
+      this.signupForm.markAllAsTouched();
+      return;  // Exit if the form is invalid
     }
-
+  
+    // Get the form value
     const newUser = this.signupForm.value;
+  
+    // Add role and assessments properties
+    const userToAdd = {
+      ...newUser,
+      role: 'Trainee',            // Set default role as 'Trainee'
+      assessments: []             // Set assessments to an empty array by default
+    };
+  
+    // Fetch all users to auto-generate a new user ID
     this.userService.getAllUsers().subscribe((users: any[]) => {
-      // Auto-generate new user ID
-      const newId = (users.length + 1).toString(); 
-
-      const userToAdd = { ...newUser, id: newId };
-
-      //add new user
+      const newId = (users.length + 1).toString(); // Generate a new ID
+      userToAdd.id = newId;  // Assign the new ID to the user
+  
+      // Add the new user
       this.userService.addUser(userToAdd).subscribe(data => {
+        console.log('New user added:', data); // Optionally log the added user data
       });
     });
   }
