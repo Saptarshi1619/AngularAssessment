@@ -64,6 +64,15 @@ export class ScoreserviceService {
     );
   }
 
+  updateScore(scoreData: any): Observable<any> {
+    const scoreId = scoreData.id;
+    return this.http.put<any>(`${this.scoresUrl}/${scoreId}`, scoreData, this.httpHeader)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

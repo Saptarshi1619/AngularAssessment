@@ -7,7 +7,10 @@
                     <label class="form-label" for="id">Select Score Record to Update</label>
                     <select class="form-select" id="id" formControlName="id" (change)="onChangeType($event)">
                         <option selected disabled>Select Score</option>
-                        <option *ngFor="let score of arrScores" [ngValue]="score.id">{{score.traineeId}} - Assessment ID: {{score.assessmentId}}</option>
+                        <!-- Dynamically populate options with scores fetched from the server -->
+                        <option *ngFor="let score of scores" [ngValue]="score.id">
+                            {{ score.traineeId }} - Assessment ID: {{ score.assessmentId }}
+                        </option>
                     </select>
                     <div *ngIf="scoreForm.controls['id'].hasError('required') && scoreForm.controls['id'].touched">
                         <small class="text-danger">Score selection is required.</small>
@@ -45,6 +48,12 @@
                     <div *ngIf="scoreForm.controls['score'].hasError('required') && scoreForm.controls['score'].touched">
                         <small class="text-danger">Score is required.</small>
                     </div>
+                    <div *ngIf="scoreForm.controls['score'].hasError('min') && scoreForm.controls['score'].touched">
+                        <small class="text-danger">Score must be between 0 and 100.</small>
+                    </div>
+                    <div *ngIf="scoreForm.controls['score'].hasError('max') && scoreForm.controls['score'].touched">
+                        <small class="text-danger">Score must be between 0 and 100.</small>
+                    </div>
                 </div>
             </div>
 
@@ -62,4 +71,3 @@
         <button class="btn btn-primary mt-4" type="submit" [disabled]="scoreForm.invalid">Update Score</button>
     </form>
 </div>
-

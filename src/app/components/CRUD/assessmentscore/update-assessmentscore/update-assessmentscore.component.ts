@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ScoreserviceService } from '../../../../services/scoreservice.service';
 
 @Component({
   selector: 'app-update-assessmentscore',
@@ -8,11 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UpdateAssessmentscoreComponent {
   scoreForm: FormGroup;
-  arrScores = [
-    { id: '1', traineeId: 'T001', assessmentId: 'A001', score: 85, date: '2024-10-10' },
-    { id: '2', traineeId: 'T002', assessmentId: 'A002', score: 90, date: '2024-10-11' },
-  ];
-  constructor(private fb: FormBuilder) {
+  scores: any[] = [];  // To store scores from JSON server
+
+  constructor(private fb: FormBuilder, private scoreService: ScoreserviceService) {
     this.scoreForm = this.fb.group({
       id: ['', Validators.required],
       traineeId: ['', Validators.required],
@@ -22,12 +21,19 @@ export class UpdateAssessmentscoreComponent {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Fetch the scores from the server when the component initializes
+    this.scoreService.getScores().subscribe((scores) => {
+      this.scores = scores;
+    });
+  }
 
   onChangeType(event: any): void {
     const selectedId = event.target.value;
-    const selectedScore = this.arrScores.find(score => score.id === selectedId);
+    const selectedScore = this.scores.find(score => score.id === selectedId);
+    
     if (selectedScore) {
+      // Patch the form with selected score details
       this.scoreForm.patchValue({
         traineeId: selectedScore.traineeId,
         assessmentId: selectedScore.assessmentId,
@@ -37,10 +43,18 @@ export class UpdateAssessmentscoreComponent {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.scoreForm.valid) {
       const updatedScore = this.scoreForm.value;
-      console.log('Updated Score:', updatedScore);
+      // Update the score using the score service
+      this.scoreService.updateScore(updatedScore).subscribe(
+        (response) => {
+          console.log('Score updated successfully:', response);
+        },
+        (error) => {
+          console.error('Error updating score:', error);
+        }
+      );
     } else {
       console.log('Form is invalid');
       this.scoreForm.markAllAsTouched();

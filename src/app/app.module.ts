@@ -73,6 +73,7 @@ import { ViewuserComponent } from './components/CRUD/Users/viewuser/viewuser.com
 import { UpdateuserComponent } from './components/CRUD/Users/updateuser/updateuser.component';
 import { UserblockComponent } from './components/userblock/userblock.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +118,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     UpdateuserComponent,
     UserblockComponent,
     ContactusComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
